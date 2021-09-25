@@ -10,5 +10,3 @@ assignees: ''
 ## 요약
 
 ## Description
-
-## Linked Issue

@@ -7,11 +7,11 @@ assignees: ''
 
 ---
 
-## [Feature] : 
+## [epic] :
 
 ## Description
 
 ## Progress
-[{label}] : 
+[{label}] :
 
 ## Linked Issue
