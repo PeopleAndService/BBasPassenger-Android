@@ -222,6 +222,8 @@ obj/
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/render.experimental.xml
+.idea/deploymentTargetDropDown.xml
 
 # OS-specific files
 .DS_Store?
