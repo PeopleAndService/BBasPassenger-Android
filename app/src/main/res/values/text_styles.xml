@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="headline1" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/nanum_square_ac_extrabold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="headline2" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/nanum_square_ac_extrabold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="headline3" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/nanum_square_ac_bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="body" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/nanum_square_ac_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="description" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/nanum_square_ac_regular</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+</resources>

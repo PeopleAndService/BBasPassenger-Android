@@ -1,3 +1,68 @@
 <resources>
-    <string name="app_name">BBasPassenger</string>
+    <string name="app_name">빠스</string>
+
+    <!-- on boarding -->
+    <string name="approved_by_administrator">관리자 승인중입니다.</string>
+    <string name="approve_description">계정 가입 인증은 평균 1일 정도 소요됩니다.</string>
+
+    <!-- activity titles -->
+    <string name="reservation_title">버스 시스템</string>
+    <string name="my_page_title">마이페이지</string>
+
+    <!-- dialog titles -->
+    <string name="input_emergency_contact_title">비상연락처를 입력해주세요.</string>
+    <string name="low_bus_only_title">저상버스만 이용하시나요?</string>
+    <string name="select_bus_title">예약할 버스를 선택해주세요.</string>
+    <string name="confirm_reservation_title">버스 탑승 정보</string>
+    <string name="done_reservation_title">예약 완료 되었습니다.</string>
+    <string name="rate_title">탑승하신 버스를 평가해주세요.</string>
+    <string name="logout_title">로그아웃 되었습니다.</string>
+    <string name="withdraw_title">탈퇴되었습니다.</string>
+
+    <!-- hints -->
+    <string name="search_hint">버스 번호 또는 정류장을 검색해주세요.</string>
+    <string name="emergency_contact_needed">필수로 입력하셔야 합니다.</string>
+    <string name="emergency_contact_uncorrect">올바른 전화번호를 입력해주세요.</string>
+    <string name="emergency_contact_hint">예) 01012345678</string>
+
+    <!-- buttons -->
+    <string name="btn_yes">네</string>
+    <string name="btn_no">아니오</string>
+    <string name="btn_confirm">확인</string>
+    <string name="btn_cancel">취소</string>
+    <string name="btn_reservation">예약하기</string>
+    <string name="btn_cancel_reservation">예약취소</string>
+    <string name="btn_rate">평가하기</string>
+
+    <!-- my page items -->
+    <string name="change_emergency_contact">비상연락처 변경하기</string>
+    <string name="change_low_bus_only">저상 버스만 보기</string>
+    <string name="api_source">정보 제공처</string>
+    <string name="legal_notice">법적고지</string>
+    <string name="help">도움말</string>
+    <string name="open_source_license">오픈소스 정보</string>
+    <string name="logout">로그아웃</string>
+    <string name="withdraw">회원 탈퇴</string>
+
+    <!-- textview -->
+    <string name="riding">승차</string>
+    <string name="get_off">하차</string>
+    <string name="riding_station">승차 정류장</string>
+    <string name="get_off_station">하차 정류장</string>
+    <string name="current_bus_position">현재 버스 위치</string>
+
+    <!-- textview format -->
+    <string name="bus_route_format">%d번</string>
+    <string name="bus_start_end_format">%s-%s</string>
+    <string name="bus_start_end_format_with_parenthesis">(%s-%s)</string>
+    <string name="bus_head_to_format">%s 방면</string>
+    <string name="bus_head_to_format_with_parenthesis">(%s 방면)</string>
+    <string name="distance_format">%dm</string>
+    <string name="bus_number_format_with_parenthesis">(%d)</string>
+    <string name="bus_number_with_type_format">%d %s</string>
+    <string name="bus_number_with_type_format_parenthesis">(%d %s)</string>
+    <string name="bus_ride_info_format">%d번 버스 (%d)</string>
+    <string name="bus_ride_info_format_with_type">%d번 버스 (%d %s)</string>
+    <string name="bus_arrival_info_format">%d분 (%d번째 전)</string>
+    <string name="bus_arrival_soon_format">곧 도착 (%d번째 전)</string>
 </resources>
