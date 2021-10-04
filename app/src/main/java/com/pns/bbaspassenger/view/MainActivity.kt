@@ -1,7 +1,8 @@
-package com.pns.bbaspassenger
+package com.pns.bbaspassenger.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.pns.bbaspassenger.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

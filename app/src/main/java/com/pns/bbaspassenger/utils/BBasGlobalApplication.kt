@@ -1,4 +1,4 @@
-package com.pns.bbaspassenger
+package com.pns.bbaspassenger.utils
 
 import android.app.Application
 

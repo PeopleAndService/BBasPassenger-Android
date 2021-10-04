@@ -1,4 +1,4 @@
-package com.pns.bbaspassenger
+package com.pns.bbaspassenger.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, LoginActivity::class.java)
         startActivity(intent)
         finish()
     }

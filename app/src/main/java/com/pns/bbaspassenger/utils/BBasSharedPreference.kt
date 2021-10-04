@@ -1,7 +1,8 @@
-package com.pns.bbaspassenger
+package com.pns.bbaspassenger.utils
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.pns.bbaspassenger.data.User
 
 class BBasSharedPreference(context: Context) {
     companion object Default {
@@ -16,8 +17,8 @@ class BBasSharedPreference(context: Context) {
 
     private val prefs: SharedPreferences = context.getSharedPreferences(PREFS_FILE_NAME, 0)
 
-    fun getString(key: String): String? {
-        return prefs.getString(key, DEFAULT_STRING_VALUE)
+    fun getString(key: String): String {
+        return prefs.getString(key, DEFAULT_STRING_VALUE)?: ""
     }
 
     fun setString(key: String, value: String) {
@@ -56,7 +57,31 @@ class BBasSharedPreference(context: Context) {
         prefs.edit().putLong(key, value).apply()
     }
 
+    fun remove(key: String) {
+        prefs.edit().remove(key).apply()
+    }
+
     fun clear() {
         prefs.edit().clear().apply()
+    }
+
+    fun getUserPrefs() : User {
+        return User(
+            getString("userId"),
+            getString("userName"),
+            getBoolean("isPermission"),
+            getString("emergencyNumber"),
+            getBoolean("onlyLowBus"),
+            getInt("userLocation")
+        )
+    }
+
+    fun clearUserPrefs() {
+        remove("userId")
+        remove("userName")
+        remove("isPermission")
+        remove("emergencyNumber")
+        remove("onlyLowBus")
+        remove("userLocation")
     }
 }
