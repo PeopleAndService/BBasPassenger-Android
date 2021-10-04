@@ -23,8 +23,6 @@ class LoginActivity : AppCompatActivity() {
                 val uid = account.id
                 val name = account.displayName
                 Log.d(TAG, "로그인 성공 : $uid, $name")
-
-                val intent
             } catch (e: ApiException) {
                 Log.e(TAG, e.toString())
                 e.printStackTrace()
