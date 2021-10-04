@@ -2,7 +2,7 @@ package com.pns.bbaspassenger.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.pns.bbaspassenger.data.User
+// import com.pns.bbaspassenger.data.User
 
 class BBasSharedPreference(context: Context) {
     companion object Default {
@@ -65,16 +65,16 @@ class BBasSharedPreference(context: Context) {
         prefs.edit().clear().apply()
     }
 
-    fun getUserPrefs() : User {
-        return User(
-            getString("userId"),
-            getString("userName"),
-            getBoolean("isPermission"),
-            getString("emergencyNumber"),
-            getBoolean("onlyLowBus"),
-            getInt("userLocation")
-        )
-    }
+//     fun getUserPrefs() : User {
+//         return User(
+//             getString("userId"),
+//             getString("userName"),
+//             getBoolean("isPermission"),
+//             getString("emergencyNumber"),
+//             getBoolean("onlyLowBus"),
+//             getInt("userLocation")
+//         )
+//     }
 
     fun clearUserPrefs() {
         remove("userId")
