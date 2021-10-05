@@ -10,8 +10,10 @@
     <string name="my_page_title">마이페이지</string>
 
     <!-- dialog titles -->
+    <string name="input_userinfo_title">추가 정보 입력</string>
     <string name="input_emergency_contact_title">비상연락처를 입력해주세요.</string>
     <string name="low_bus_only_title">저상버스만 이용하시나요?</string>
+    <string name="select_location_title">사용 지역을 선택해주세요.</string>
     <string name="select_bus_title">예약할 버스를 선택해주세요.</string>
     <string name="confirm_reservation_title">버스 탑승 정보</string>
     <string name="done_reservation_title">예약 완료 되었습니다.</string>
@@ -33,6 +35,7 @@
     <string name="btn_reservation">예약하기</string>
     <string name="btn_cancel_reservation">예약취소</string>
     <string name="btn_rate">평가하기</string>
+    <string name="btn_quit">앱 종료하기</string>
 
     <!-- my page items -->
     <string name="change_emergency_contact">비상연락처 변경하기</string>
