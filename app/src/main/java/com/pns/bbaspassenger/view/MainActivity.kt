@@ -5,6 +5,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.pns.bbaspassenger.R
+import com.pns.bbaspassenger.utils.BBasGlobalApplication
 import com.pns.bbaspassenger.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,6 +13,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        if (BBasGlobalApplication.prefs.getString("emergencyNumber") == "" || BBasGlobalApplication.prefs.getInt("location") == 0) {
+            UserInfoDialog().show(supportFragmentManager, "user info dialog")
+        }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this

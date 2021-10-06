@@ -2,6 +2,21 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.pns.bbaspassenger">
 
+    <!-- 위치 권한 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <!-- nfc 권한 -->
+    <uses-permission android:name="android.permission.NFC" />
+
+    <uses-feature
+        android:name="android.hardware.nfc"
+        android:required="true" />
+
+    <!-- 인터넷 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".utils.BBasGlobalApplication"
         android:allowBackup="true"
@@ -9,7 +24,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.BBasPassenger">
+        android:theme="@style/Theme.BBasPassenger"
+        android:usesCleartextTraffic="true">
         <activity
             android:name=".view.LaunchActivity"
             android:exported="true"

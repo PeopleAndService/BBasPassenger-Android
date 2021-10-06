@@ -68,7 +68,7 @@
 
     <!-- Dialogs -->
     <style name="dialog.normal" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
-        <item name="colorSurface">@color/colorBackgroundElevated</item>
+        <item name="colorSurface">@color/colorBackground</item>
         <item name="alertDialogStyle">@style/dialog.background</item>
 
         <!-- button styles -->
