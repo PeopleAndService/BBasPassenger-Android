@@ -20,7 +20,7 @@
     <string name="my_page_title">마이페이지</string>
 
     <!-- dialog titles -->
-    <string name="input_userinfo_title">추가 정보 입력</string>
+    <string name="input_userinfo_title">추가 정보 입력이 필요합니다.</string>
     <string name="input_emergency_contact_title">비상연락처를 입력해주세요.</string>
     <string name="low_bus_only_title">저상버스만 이용하시나요?</string>
     <string name="select_location_title">사용 지역을 선택해주세요.</string>
@@ -30,6 +30,9 @@
     <string name="rate_title">탑승하신 버스를 평가해주세요.</string>
     <string name="logout_title">로그아웃 되었습니다.</string>
     <string name="withdraw_title">탈퇴되었습니다.</string>
+    <string name="error_title">예상치 못한 오류가 발생하였습니다.</string>
+    <string name="error_message">다시 시도해 주세요.</string>
+    <string name="emergency_regex_error">비상연락처 형식이 잘못되었습니다.</string>
 
     <!-- hints -->
     <string name="search_hint">버스 번호 또는 정류장을 검색해주세요.</string>
@@ -46,6 +49,7 @@
     <string name="btn_cancel_reservation">예약취소</string>
     <string name="btn_rate">평가하기</string>
     <string name="btn_quit">앱 종료하기</string>
+    <string name="btn_save">저장하기</string>
 
     <!-- my page items -->
     <string name="change_emergency_contact">비상연락처 변경하기</string>
@@ -78,4 +82,10 @@
     <string name="bus_ride_info_format_with_type">%d번 버스 (%d %s)</string>
     <string name="bus_arrival_info_format">%d분 (%d번째 전)</string>
     <string name="bus_arrival_soon_format">곧 도착 (%d번째 전)</string>
+
+    <!-- location -->
+    <string name="none">없음</string>
+    <string name="code1">진주</string>
+    <string name="code2">창원</string>
+    <string name="code3">양산</string>
 </resources>

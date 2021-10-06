@@ -76,9 +76,6 @@ class BBasSharedPreference(context: Context) {
     }
 
     fun updateUserPrefs(user: User) {
-        if (getString("userName") != user.name) {
-            setString("userName", user.name)
-        }
         if (getString("emergencyNumber") != user.emergencyNumber) {
             setString("emergencyNumber", user.emergencyNumber?: "")
         }
