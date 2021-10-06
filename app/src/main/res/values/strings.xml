@@ -1,23 +1,38 @@
 <resources>
     <string name="app_name">빠스</string>
 
-    <!-- on boarding -->
-    <string name="approved_by_administrator">관리자 승인중입니다.</string>
-    <string name="approve_description">계정 가입 인증은 평균 1일 정도 소요됩니다.</string>
+    <!-- launch -->
+    <string name="permission_title">앱 사용을 위해 위치 권한이 반드시 필요합니다.</string>
+    <string name="setting_button">설정</string>
+    <string name="permission_denied_message">위치 권한이 거부되어 앱이 종료됩니다.\n[설정] -> [권한]에서 허용 가능합니다.</string>
+    <string name="permission_denied_title">위치 권한이 거부되어 앱이 종료됩니다.</string>
+    <string name="quit_app">앱 종료</string>
+    <string name="nfc_title">NFC 설정</string>
+    <string name="nfc_message">앱 사용을 위해 NFC 모드를 기본 모드로 반드시 설정해주세요.\n확인 버튼을 누르면 설정으로 이동합니다.\nNFC가 기본 모드가 아닌 경우 앱이 종료됩니다.</string>
+    <string name="nfc_quit_app_message">NFC 기본 모드가 꺼져있어 앱이 종료됩니다.</string>
+
+    <!-- login -->
+    <string name="login_failed_title">로그인 실패</string>
+    <string name="login_failed_message">로그인에 실패하였습니다.\n다시 시도해주세요.</string>
 
     <!-- activity titles -->
     <string name="reservation_title">버스 시스템</string>
     <string name="my_page_title">마이페이지</string>
 
     <!-- dialog titles -->
+    <string name="input_userinfo_title">추가 정보 입력이 필요합니다.</string>
     <string name="input_emergency_contact_title">비상연락처를 입력해주세요.</string>
     <string name="low_bus_only_title">저상버스만 이용하시나요?</string>
+    <string name="select_location_title">사용 지역을 선택해주세요.</string>
     <string name="select_bus_title">예약할 버스를 선택해주세요.</string>
     <string name="confirm_reservation_title">버스 탑승 정보</string>
     <string name="done_reservation_title">예약 완료 되었습니다.</string>
     <string name="rate_title">탑승하신 버스를 평가해주세요.</string>
     <string name="logout_title">로그아웃 되었습니다.</string>
     <string name="withdraw_title">탈퇴되었습니다.</string>
+    <string name="error_title">예상치 못한 오류가 발생하였습니다.</string>
+    <string name="error_message">다시 시도해 주세요.</string>
+    <string name="emergency_regex_error">비상연락처 형식이 잘못되었습니다.</string>
 
     <!-- hints -->
     <string name="search_hint">버스 번호 또는 정류장을 검색해주세요.</string>
@@ -33,6 +48,8 @@
     <string name="btn_reservation">예약하기</string>
     <string name="btn_cancel_reservation">예약취소</string>
     <string name="btn_rate">평가하기</string>
+    <string name="btn_quit">앱 종료하기</string>
+    <string name="btn_save">저장하기</string>
 
     <!-- my page items -->
     <string name="change_emergency_contact">비상연락처 변경하기</string>
@@ -65,4 +82,10 @@
     <string name="bus_ride_info_format_with_type">%d번 버스 (%d %s)</string>
     <string name="bus_arrival_info_format">%d분 (%d번째 전)</string>
     <string name="bus_arrival_soon_format">곧 도착 (%d번째 전)</string>
+
+    <!-- location -->
+    <string name="none">없음</string>
+    <string name="code1">진주</string>
+    <string name="code2">창원</string>
+    <string name="code3">양산</string>
 </resources>
