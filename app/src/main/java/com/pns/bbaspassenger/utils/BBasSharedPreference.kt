@@ -2,7 +2,9 @@ package com.pns.bbaspassenger.utils
 
 import android.content.Context
 import android.content.SharedPreferences
-// import com.pns.bbaspassenger.data.User
+import com.pns.bbaspassenger.data.model.User
+
+// import com.pns.bbaspassenger.data.model.User
 
 class BBasSharedPreference(context: Context) {
     companion object Default {
@@ -65,23 +67,48 @@ class BBasSharedPreference(context: Context) {
         prefs.edit().clear().apply()
     }
 
-//     fun getUserPrefs() : User {
-//         return User(
-//             getString("userId"),
-//             getString("userName"),
-//             getBoolean("isPermission"),
-//             getString("emergencyNumber"),
-//             getBoolean("onlyLowBus"),
-//             getInt("userLocation")
-//         )
-//     }
+    fun isSameUser(userId: String) = getString("userId") == userId
+
+    fun setUserPrefs(user: User) {
+        setString("userId", user.userId)
+        setString("userName", user.name)
+        setString("emergencyNumber", user.emergencyNumber?: "")
+        setBoolean("onlyLowBus", user.onlyLowBus)
+        setInt("location", user.location?: 0)
+    }
+
+    fun updateUserPrefs(user: User) {
+        if (getString("userName") != user.name) {
+            setString("userName", user.name)
+        }
+        if (getString("emergencyNumber") != user.emergencyNumber) {
+            setString("emergencyNumber", user.emergencyNumber?: "")
+        }
+        if (getBoolean("onlyLowBus") != user.onlyLowBus) {
+            setBoolean("onlyLowBus", user.onlyLowBus)
+        }
+        if (getInt("location") != user.location) {
+            setInt("location", user.location?: 0)
+        }
+    }
+
+    fun getUserPrefs() : User {
+        return User(
+            getString("userId"),
+            getString("userName"),
+            "",
+            false,
+            getString("emergencyNumber"),
+            getBoolean("onlyLowBus"),
+            getInt("location")
+        )
+    }
 
     fun clearUserPrefs() {
         remove("userId")
         remove("userName")
-        remove("isPermission")
         remove("emergencyNumber")
         remove("onlyLowBus")
-        remove("userLocation")
+        remove("location")
     }
 }
