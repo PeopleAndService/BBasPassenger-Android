@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.pns.bbaspassenger.data.model.User
 
-// import com.pns.bbaspassenger.data.model.User
-
 class BBasSharedPreference(context: Context) {
     companion object Default {
         private const val PREFS_FILE_NAME = "prefs"
