@@ -2,7 +2,7 @@ package com.pns.bbaspassenger.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class SignUpRequestBody(
+data class SignUserRequestBody(
     @SerializedName("uid")
     val uid: String,
 

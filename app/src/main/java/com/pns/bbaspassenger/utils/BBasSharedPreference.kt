@@ -69,7 +69,7 @@ class BBasSharedPreference(context: Context) {
 
     fun setUserPrefs(user: User) {
         setString("userId", user.userId)
-        setString("userName", user.name)
+        setString("userName", user.userName)
         setString("emergencyNumber", user.emergencyNumber?: "")
         setBoolean("onlyLowBus", user.onlyLowBus)
         setInt("location", user.location?: 0)

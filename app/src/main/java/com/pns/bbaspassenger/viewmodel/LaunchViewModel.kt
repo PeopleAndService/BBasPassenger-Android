@@ -24,10 +24,10 @@ class LaunchViewModel : ViewModel() {
                 UserRepository.getUser(requestBody).let { response ->
                     if (response.isSuccessful) {
                         response.body()?.let {
-                            val user = it.result
-                            Log.d(TAG, "result : $user")
+                            val userResult = it.result
+                            Log.d(TAG, "result : $userResult")
 
-                            BBasGlobalApplication.prefs.updateUserPrefs(user)
+                            BBasGlobalApplication.prefs.updateUserPrefs(userResult)
                             Log.d(TAG, "prefs user : ${BBasGlobalApplication.prefs.getUserPrefs()}")
                             _autoLoginSuccess.postValue(true)
                         }
@@ -39,6 +39,7 @@ class LaunchViewModel : ViewModel() {
             } catch (e: IOException) {
                 Log.e(TAG, e.message.toString())
                 e.printStackTrace()
+                _autoLoginSuccess.postValue(false)
             }
         }
     }

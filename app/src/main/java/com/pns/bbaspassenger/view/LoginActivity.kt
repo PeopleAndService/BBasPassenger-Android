@@ -23,10 +23,10 @@ class LoginActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
             try {
                 val account = task.getResult(ApiException::class.java)
-                val uid = account.id
+                val googleUserId = account.id
                 val name = account.displayName
-                if (uid != null) {
-                    viewModel.sign(uid, name?: "")
+                if (googleUserId != null) {
+                    viewModel.sign(googleUserId, name?: "")
                 } else {
                     loginFailed()
                 }
@@ -81,6 +81,7 @@ class LoginActivity : AppCompatActivity() {
             .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
                 dialogInterface.dismiss()
             }
+            .setCancelable(false)
             .show()
     }
 

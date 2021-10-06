@@ -34,6 +34,7 @@ class LaunchActivity : AppCompatActivity() {
                         dialogInterface.dismiss()
                         finish()
                     }
+                    .setCancelable(false)
                     .show()
             }
         }
@@ -93,6 +94,7 @@ class LaunchActivity : AppCompatActivity() {
                         dialogInterface.dismiss()
                         finish()
                     }
+                    .setCancelable(false)
                     .show()
             }
         }
@@ -130,6 +132,7 @@ class LaunchActivity : AppCompatActivity() {
             val intent = Intent(Settings.ACTION_NFC_SETTINGS)
             nfcSettingResult.launch(intent)
         }
+        .setCancelable(false)
         .create()
 
     companion object {

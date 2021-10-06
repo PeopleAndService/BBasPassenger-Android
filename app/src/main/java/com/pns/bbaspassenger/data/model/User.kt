@@ -7,7 +7,7 @@ data class User(
     val userId: String,
 
     @SerializedName("name")
-    val name: String,
+    val userName: String,
 
     @SerializedName("pushToken")
     val pushToken: String?,

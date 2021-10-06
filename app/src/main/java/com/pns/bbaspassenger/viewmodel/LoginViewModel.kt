@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pns.bbaspassenger.data.model.SignUpRequestBody
+import com.pns.bbaspassenger.data.model.SignUserRequestBody
 import com.pns.bbaspassenger.repository.UserRepository
 import com.pns.bbaspassenger.utils.BBasGlobalApplication
 import com.pns.bbaspassenger.utils.SingleEvent
@@ -26,15 +26,15 @@ class LoginViewModel : ViewModel() {
 
     fun sign(userId: String, name: String) {
         viewModelScope.launch(Dispatchers.IO) {
-            val signUpRequestBody = SignUpRequestBody(userId, name)
+            val signUpRequestBody = SignUserRequestBody(userId, name)
             try {
                 UserRepository.sign(signUpRequestBody).let { response ->
                     if (response.isSuccessful) {
                         response.body()?.let {
-                            val user = it.result
-                            Log.d(TAG, "result : $user")
+                            val userResult = it.result
+                            Log.d(TAG, "result : $userResult")
 
-                            BBasGlobalApplication.prefs.setUserPrefs(user)
+                            BBasGlobalApplication.prefs.setUserPrefs(userResult)
                             Log.d(TAG, "prefs user : ${BBasGlobalApplication.prefs.getUserPrefs()}")
                             _loginSuccess.postValue(true)
                         }
@@ -46,6 +46,7 @@ class LoginViewModel : ViewModel() {
             } catch (e : IOException) {
                 Log.e(TAG, e.message.toString())
                 e.printStackTrace()
+                _loginSuccess.postValue(false)
             }
         }
     }
