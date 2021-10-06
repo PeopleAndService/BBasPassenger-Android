@@ -1,9 +1,19 @@
 <resources>
     <string name="app_name">빠스</string>
 
-    <!-- on boarding -->
-    <string name="approved_by_administrator">관리자 승인중입니다.</string>
-    <string name="approve_description">계정 가입 인증은 평균 1일 정도 소요됩니다.</string>
+    <!-- launch -->
+    <string name="permission_title">앱 사용을 위해 위치 권한이 반드시 필요합니다.</string>
+    <string name="setting_button">설정</string>
+    <string name="permission_denied_message">위치 권한이 거부되어 앱이 종료됩니다.\n[설정] -> [권한]에서 허용 가능합니다.</string>
+    <string name="permission_denied_title">위치 권한이 거부되어 앱이 종료됩니다.</string>
+    <string name="quit_app">앱 종료</string>
+    <string name="nfc_title">NFC 설정</string>
+    <string name="nfc_message">앱 사용을 위해 NFC 모드를 기본 모드로 반드시 설정해주세요.\n확인 버튼을 누르면 설정으로 이동합니다.\nNFC가 기본 모드가 아닌 경우 앱이 종료됩니다.</string>
+    <string name="nfc_quit_app_message">NFC 기본 모드가 꺼져있어 앱이 종료됩니다.</string>
+
+    <!-- login -->
+    <string name="login_failed_title">로그인 실패</string>
+    <string name="login_failed_message">로그인에 실패하였습니다.\n다시 시도해주세요.</string>
 
     <!-- activity titles -->
     <string name="reservation_title">버스 시스템</string>
