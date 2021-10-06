@@ -14,20 +14,23 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
+import com.pns.bbaspassenger.R
+import com.pns.bbaspassenger.utils.BBasGlobalApplication
 import com.pns.bbaspassenger.viewmodel.LaunchViewModel
 
 class LaunchActivity : AppCompatActivity() {
+    private val viewModel: LaunchViewModel by viewModels()
     private lateinit var nfcCheckDialog: AlertDialog
 
     private val nfcSettingResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { _ ->
             nfcCheckDialog.dismiss()
             if (isNFCEnabled()) {
-                startLoginActivity()
+                login()
             } else {
                 MaterialAlertDialogBuilder(this@LaunchActivity)
-                    .setTitle("NFC 기본 모드가 꺼져있어 앱이 종료됩니다.")
-                    .setPositiveButton("앱 종료") { dialogInterface, _ ->
+                    .setTitle(getString(R.string.nfc_quit_app_message))
+                    .setPositiveButton(getString(R.string.quit_app)) { dialogInterface, _ ->
                         dialogInterface.dismiss()
                         finish()
                     }
@@ -40,6 +43,27 @@ class LaunchActivity : AppCompatActivity() {
 
         // 위치 권한 부여
         setPermission()
+
+        setObserver()
+    }
+
+    private fun login() {
+        val account = GoogleSignIn.getLastSignedInAccount(this@LaunchActivity)
+        if (account != null && BBasGlobalApplication.prefs.isSameUser(account.id?: "")) {
+            viewModel.autoLogin(account.id?: "")
+        } else {
+            startLoginActivity()
+        }
+    }
+
+    private fun setObserver() {
+        viewModel.autoLoginSuccess.observe(this) {
+            if (it) {
+                startMainActivity()
+            } else {
+                startLoginActivity()
+            }
+        }
     }
 
     private fun startLoginActivity() {
@@ -57,15 +81,15 @@ class LaunchActivity : AppCompatActivity() {
     private fun setPermission() {
         val permissionListener = object : PermissionListener {
             override fun onPermissionGranted() {
-                Log.d(TAG, "granted")
+                Log.d(TAG, "permission granted")
                 // NFC 확인
                 setNFC()
             }
 
             override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
                 MaterialAlertDialogBuilder(this@LaunchActivity)
-                    .setTitle("위치 권한이 거부되어 앱이 종료됩니다.")
-                    .setPositiveButton("계속하기") { dialogInterface, _ ->
+                    .setTitle(getString(R.string.permission_denied_title))
+                    .setPositiveButton(getString(R.string.quit_app)) { dialogInterface, _ ->
                         dialogInterface.dismiss()
                         finish()
                     }
@@ -79,18 +103,18 @@ class LaunchActivity : AppCompatActivity() {
     private fun checkPermission(permissionListener: PermissionListener) {
         TedPermission.create()
             .setPermissionListener(permissionListener)
-            .setRationaleMessage("앱 사용을 위해 위치 권한이 반드시 필요합니다.")
-            .setRationaleConfirmText("설정")
-            .setDeniedMessage("위치 권한이 거부되어 앱이 종료됩니다.\n[설정] -> [권한]에서 허용 가능합니다.")
+            .setRationaleMessage(getString(R.string.permission_title))
+            .setRationaleConfirmText(getString(R.string.setting_button))
+            .setDeniedMessage(getString(R.string.permission_denied_message))
             .setGotoSettingButton(false)
-            .setDeniedCloseButtonText("앱 종료")
+            .setDeniedCloseButtonText(getString(R.string.quit_app))
             .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
             .check()
     }
 
     private fun setNFC() {
         if (isNFCEnabled()) {
-            startLoginActivity()
+            login()
         } else {
             nfcCheckDialog = createNFCCheckDialog()
             nfcCheckDialog.show()
@@ -100,9 +124,9 @@ class LaunchActivity : AppCompatActivity() {
     private fun isNFCEnabled() = NfcAdapter.getDefaultAdapter(this@LaunchActivity).isEnabled
 
     private fun createNFCCheckDialog() = MaterialAlertDialogBuilder(this@LaunchActivity)
-        .setTitle("NFC 설정")
-        .setMessage("앱 사용을 위해 NFC 모드를 기본 모드로 반드시 설정해주세요.\n확인 버튼을 누르면 설정으로 이동합니다.\nNFC가 기본 모드가 아닌 경우 앱이 종료됩니다.")
-        .setPositiveButton("설정") { _, _ ->
+        .setTitle(getString(R.string.nfc_title))
+        .setMessage(getString(R.string.nfc_message))
+        .setPositiveButton(getString(R.string.setting_button)) { _, _ ->
             val intent = Intent(Settings.ACTION_NFC_SETTINGS)
             nfcSettingResult.launch(intent)
         }
