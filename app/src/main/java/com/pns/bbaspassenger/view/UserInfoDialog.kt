@@ -25,6 +25,7 @@ class UserInfoDialog : DialogFragment() {
         binding = DialogUserinfoBinding.inflate(layoutInflater)
         dialog.setContentView(binding.root)
 
+        setData()
         initDialog()
         setObserver()
 
@@ -34,40 +35,15 @@ class UserInfoDialog : DialogFragment() {
     }
 
     private fun initDialog() {
-        val emergencyNumber = BBasGlobalApplication.prefs.getString("emergencyNumber")
-        if (emergencyNumber != "") {
-            binding.etEmergencyNumber.setText(emergencyNumber)
-        }
-        binding.switchLowBus.isChecked = BBasGlobalApplication.prefs.getBoolean("onlyLowBus")
-        binding.cgLocation.check(LocationEnum.codeFind(BBasGlobalApplication.prefs.getInt("location")).id)
-
         setTextWatcher()
 
-        binding.btnConfirm.setOnClickListener {
+        binding.btnSave.setOnClickListener {
             if (binding.etEmergencyNumber.text.toString().isEmpty()) {
-                MaterialAlertDialogBuilder(requireContext())
-                    .setTitle(getString(R.string.input_emergency_contact_title))
-                    .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
-                        dialogInterface.dismiss()
-                    }
-                    .setCancelable(false)
-                    .show()
+                createAlertDialog(getString(R.string.input_emergency_contact_title))
             } else if (!binding.etEmergencyNumber.text.toString().matches(Regex("^01[016789][0-9]{4}[0-9]{4}$"))) {
-                MaterialAlertDialogBuilder(requireContext())
-                    .setTitle(getString(R.string.emergency_regex_error))
-                    .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
-                        dialogInterface.dismiss()
-                    }
-                    .setCancelable(false)
-                    .show()
+                createAlertDialog(getString(R.string.emergency_regex_error))
             } else if (binding.cgLocation.checkedChipId == R.id.chip0 || binding.cgLocation.checkedChipId == View.NO_ID) {
-                MaterialAlertDialogBuilder(requireContext())
-                    .setTitle(getString(R.string.select_location_title))
-                    .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
-                        dialogInterface.dismiss()
-                    }
-                    .setCancelable(false)
-                    .show()
+                createAlertDialog(getString(R.string.select_location_title))
             } else {
                 val inputEmergencyNumber = binding.etEmergencyNumber.text.toString()
                 val onlyLowBus = binding.switchLowBus.isChecked
@@ -76,6 +52,29 @@ class UserInfoDialog : DialogFragment() {
                 viewModel.updateUserInfo(inputEmergencyNumber, onlyLowBus, location)
             }
         }
+    }
+
+    private fun setData() {
+        arguments.let {
+            if (it != null) {
+                val isChangeSetting = it.getBoolean("isChangeSetting")
+                if (isChangeSetting) {
+                    binding.tvTitle.text = getString(R.string.change_setting)
+                    binding.btnSave.text = getString(R.string.btn_change)
+                    binding.btnClose.visibility = View.VISIBLE
+                    binding.btnClose.setOnClickListener {
+                        dismiss()
+                    }
+                }
+            }
+        }
+
+        val emergencyNumber = BBasGlobalApplication.prefs.getString("emergencyNumber")
+        if (emergencyNumber != "") {
+            binding.etEmergencyNumber.setText(emergencyNumber)
+        }
+        binding.switchLowBus.isChecked = BBasGlobalApplication.prefs.getBoolean("onlyLowBus")
+        binding.cgLocation.check(LocationEnum.codeFind(BBasGlobalApplication.prefs.getInt("location")).id)
     }
 
     private fun setObserver() {
@@ -92,7 +91,6 @@ class UserInfoDialog : DialogFragment() {
                     .setCancelable(false)
                     .show()
             }
-            dismiss()
         }
     }
 
@@ -101,10 +99,10 @@ class UserInfoDialog : DialogFragment() {
             if (text.isNullOrEmpty()) {
                 binding.tilEmergencyNumber.isErrorEnabled = true
                 binding.tilEmergencyNumber.error = getString(R.string.emergency_contact_needed)
-            } else if (text.length == 11 && !text.matches(Regex("^01[016789][0-9]{4}[0-9]{4}$"))) {
+            } else if (text.length == 11 && !text.matches(regex)) {
                 binding.tilEmergencyNumber.isErrorEnabled = true
                 binding.tilEmergencyNumber.error = getString(R.string.emergency_contact_uncorrect)
-            } else if (text.length == 11 && text.matches(Regex("^01[016789][0-9]{4}[0-9]{4}$"))) {
+            } else if (text.length == 11 && text.matches(regex)) {
                 binding.tilEmergencyNumber.isErrorEnabled = false
                 binding.tilEmergencyNumber.endIconMode = TextInputLayout.END_ICON_NONE
             } else {
@@ -116,5 +114,18 @@ class UserInfoDialog : DialogFragment() {
         binding.tilEmergencyNumber.setErrorIconOnClickListener {
             binding.etEmergencyNumber.setText("")
         }
+    }
+
+    private fun createAlertDialog(title: String) =
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(title)
+            .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
+                dialogInterface.dismiss()
+            }
+            .setCancelable(false)
+            .show()
+
+    companion object {
+        private val regex = Regex("^01[016789][0-9]{4}[0-9]{4}$")
     }
 }
