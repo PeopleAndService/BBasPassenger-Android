@@ -5,8 +5,10 @@ import com.pns.bbaspassenger.data.model.GetUserRequestBody
 import com.pns.bbaspassenger.data.model.SignUserRequestBody
 import com.pns.bbaspassenger.data.model.UpdateUserRequestBody
 import com.pns.bbaspassenger.data.model.User
+import org.json.JSONObject
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.HTTP
 import retrofit2.http.POST
 import retrofit2.http.PUT
 
@@ -27,4 +29,9 @@ interface ApiService {
     suspend fun updateUser(
         @Body updateUserRequestBody: UpdateUserRequestBody
     ): Response<BaseResponseModel<User>>
+
+    @HTTP(method = "DELETE", path = "passenger", hasBody = true)
+    suspend fun deleteUser(
+        @Body deleteUserRequestBody: GetUserRequestBody
+    ): Response<BaseResponseModel<JSONObject>>
 }

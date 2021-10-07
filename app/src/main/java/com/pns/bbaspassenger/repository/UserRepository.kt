@@ -6,7 +6,10 @@ import com.pns.bbaspassenger.data.model.UpdateUserRequestBody
 import com.pns.bbaspassenger.data.source.RemoteDataSource
 
 object UserRepository {
-    suspend fun sign(userRequestBody: SignUserRequestBody) = RemoteDataSource.bbasService.sign(userRequestBody)
-    suspend fun getUser(getUserRequestBody: GetUserRequestBody) = RemoteDataSource.bbasService.getUser(getUserRequestBody)
-    suspend fun updateUser(updateUserRequestBody: UpdateUserRequestBody) = RemoteDataSource.bbasService.updateUser(updateUserRequestBody)
+    private val service = RemoteDataSource.bbasService
+
+    suspend fun sign(userRequestBody: SignUserRequestBody) = service.sign(userRequestBody)
+    suspend fun getUser(getUserRequestBody: GetUserRequestBody) = service.getUser(getUserRequestBody)
+    suspend fun updateUser(updateUserRequestBody: UpdateUserRequestBody) = service.updateUser(updateUserRequestBody)
+    suspend fun deleteUser(deleteUserRequestBody: GetUserRequestBody) = service.deleteUser(deleteUserRequestBody)
 }
