@@ -19,6 +19,16 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/spacing_normal">
 
+        <ImageView
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:src="@drawable/btn_close"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
@@ -226,7 +236,7 @@
         </com.google.android.material.chip.ChipGroup>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_confirm"
+            android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btn_save"

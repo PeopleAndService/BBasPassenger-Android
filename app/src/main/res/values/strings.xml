@@ -20,7 +20,7 @@
     <string name="my_page_title">마이페이지</string>
 
     <!-- dialog titles -->
-    <string name="input_userinfo_title">추가 정보 입력이 필요합니다.</string>
+    <string name="input_userinfo_title">추가 정보 입력</string>
     <string name="input_emergency_contact_title">비상연락처를 입력해주세요.</string>
     <string name="low_bus_only_title">저상버스만 이용하시나요?</string>
     <string name="select_location_title">사용 지역을 선택해주세요.</string>
@@ -28,8 +28,8 @@
     <string name="confirm_reservation_title">버스 탑승 정보</string>
     <string name="done_reservation_title">예약 완료 되었습니다.</string>
     <string name="rate_title">탑승하신 버스를 평가해주세요.</string>
-    <string name="logout_title">로그아웃 되었습니다.</string>
-    <string name="withdraw_title">탈퇴되었습니다.</string>
+    <string name="logout_title">로그아웃 하시겠습니까?</string>
+    <string name="withdraw_title">빠스 앱을 탈퇴하시겠습니까?</string>
     <string name="error_title">예상치 못한 오류가 발생하였습니다.</string>
     <string name="error_message">다시 시도해 주세요.</string>
     <string name="emergency_regex_error">비상연락처 형식이 잘못되었습니다.</string>
@@ -54,8 +54,10 @@
     <string name="btn_refresh">새로고침</string>
     <string name="btn_quit">앱 종료하기</string>
     <string name="btn_save">저장하기</string>
+    <string name="btn_change">변경하기</string>
 
     <!-- my page items -->
+    <string name="change_setting">회원 설정 변경</string>
     <string name="change_emergency_contact">비상연락처 변경하기</string>
     <string name="change_low_bus_only">저상 버스만 보기</string>
     <string name="api_source">정보 제공처</string>
