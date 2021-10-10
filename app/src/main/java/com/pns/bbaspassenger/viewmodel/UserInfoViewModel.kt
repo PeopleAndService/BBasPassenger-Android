@@ -17,7 +17,7 @@ class UserInfoViewModel : ViewModel() {
 
     val success: LiveData<Boolean> = _success
 
-    fun updateUserInfo(emergencyNumber: String, onlyLowBus: Boolean, location: Int) {
+    fun updateUserInfo(emergencyNumber: String, onlyLowBus: Boolean, location: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val requestBody = UpdateUserRequestBody(BBasGlobalApplication.prefs.getString("userId"), emergencyNumber, onlyLowBus, location)

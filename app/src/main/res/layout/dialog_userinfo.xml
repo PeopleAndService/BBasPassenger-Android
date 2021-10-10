@@ -76,6 +76,7 @@
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch_low_bus"
+            style="@style/switch.normal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/low_bus_only_title"
@@ -108,126 +109,108 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(0).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(1).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(2).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(3).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(4).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(5).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(6).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(7).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(8).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(9).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(10).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(11).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(12).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(13).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(14).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(15).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@{locationEnum.Companion.positionFind(16).cityName}" />
 
             <com.google.android.material.chip.Chip
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:id="@+id/chip17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
