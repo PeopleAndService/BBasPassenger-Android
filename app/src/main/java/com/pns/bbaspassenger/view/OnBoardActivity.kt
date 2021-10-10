@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pns.bbaspassenger.R
 import com.pns.bbaspassenger.databinding.ActivityOnBoardBinding
 import com.pns.bbaspassenger.viewmodel.OnBoardViewModel
 
@@ -19,8 +20,18 @@ class OnBoardActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         setContentView(binding.root)
-
+        setObserver()
         initRcView()
+    }
+
+    private fun setObserver() {
+        viewModel.userQueue.observe(this) {
+            if (it.isBoarded) {
+                binding.btnRoute.text = getString(R.string.btn_rate)
+            } else {
+                binding.btnRoute.text = getString(R.string.btn_cancel_reservation)
+            }
+        }
     }
 
     private fun initRcView() {
