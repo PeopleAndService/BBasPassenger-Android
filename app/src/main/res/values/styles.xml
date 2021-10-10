@@ -112,4 +112,12 @@
         <item name="android:textAppearance">@style/text.body</item>
         <item name="android:textColor">@color/state_chip_text</item>
     </style>
+
+    <!-- Switch styles -->
+    <style name="switch.normal" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/state_thumb</item>
+        <item name="trackTint">@color/state_track</item>
+        <item name="switchMinWidth">56dp</item>
+    </style>
+
 </resources>

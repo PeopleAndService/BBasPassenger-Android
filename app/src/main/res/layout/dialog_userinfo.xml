@@ -76,6 +76,7 @@
 
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/switch_low_bus"
+            style="@style/switch.normal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/low_bus_only_title"
