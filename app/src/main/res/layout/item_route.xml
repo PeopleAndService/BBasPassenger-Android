@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="com.pns.bbaspassenger.data.model.RouteItemModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/line_start"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:background="@color/colorText"
+            android:visibility="@{data.first}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/guideline1"
+            app:layout_constraintStart_toStartOf="@id/ic_station"
+            app:layout_constraintEnd_toEndOf="@id/ic_station" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ic_station"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@android:color/transparent"
+            android:src="@color/colorBackground"
+            android:layout_marginVertical="16dp"
+            app:civ_border_width="2dp"
+            app:civ_border_overlay="false"
+            app:civ_border_color="@color/colorText"
+            android:elevation="2dp"
+            android:shadowColor="@android:color/transparent"
+            app:civ_circle_background_color="@color/colorBackground"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline2"
+            app:layout_constraintEnd_toStartOf="@+id/guideline3" />
+
+        <View
+            android:id="@+id/line_end"
+            android:layout_width="2dp"
+            android:layout_height="0dp"
+            android:background="@color/colorText"
+            android:visibility="@{data.end}"
+            app:layout_constraintTop_toBottomOf="@id/guideline1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/ic_station"
+            app:layout_constraintEnd_toEndOf="@id/ic_station" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintGuide_percent=".5"
+            android:id="@+id/guideline1" />
+
+        <TextView
+            android:id="@+id/tv_station_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{data.nodeName}"
+            android:textAppearance="@style/text.h3"
+            android:textColor="@color/colorText"
+            android:layout_marginStart="@dimen/spacing_normal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/guideline3" />
+
+        <TextView
+            android:id="@+id/tv_station_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/text.description"
+            android:textColor="@color/colorText"
+            android:text="@{data.nodeNo}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_station_name"
+            android:layout_marginStart="@dimen/spacing_normal" />
+
+        <TextView
+            android:id="@+id/tv_arrival"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/text.description"
+            android:textColor="@color/colorWarning"
+            android:layout_marginTop="@dimen/spacing_normal"
+            app:layout_constraintTop_toTopOf="@id/tv_station_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_station_name" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline2"
+            app:layout_constraintGuide_begin="@dimen/spacing_normal"
+            android:orientation="vertical" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline3"
+            app:layout_constraintGuide_begin="48dp"
+            android:orientation="vertical" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
