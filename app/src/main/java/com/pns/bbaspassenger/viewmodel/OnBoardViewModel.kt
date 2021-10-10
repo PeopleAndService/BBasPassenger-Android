@@ -92,6 +92,6 @@ class OnBoardViewModel : ViewModel() {
 
     companion object {
         private const val TAG = "OnBoardViewModel"
-        private val SERVICE_KEY = URLDecoder.decode("PgdnR4cgw6WwmfyR7rqzzBcJPu3rx3LPtinOu4hHP5B9o2oiJ6alrNDnOvcqdBmUQKgQxFW1WGDnEMPFh%2B87Zw%3D%3D", "UTF-8")
+        private val SERVICE_KEY = URLDecoder.decode(BBasGlobalApplication.prefs.getString("busApiKey"), "UTF-8")
     }
 }
