@@ -50,7 +50,7 @@ class OnBoardViewModel : ViewModel() {
     private fun getRoute(routeId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                OnBoardRepository.getRoute(SERVICE_KEY, BBasGlobalApplication.prefs.getInt("location").toString(), routeId).let { response ->
+                OnBoardRepository.getRoute(SERVICE_KEY, BBasGlobalApplication.prefs.getString("location"), routeId).let { response ->
                     if (response.isSuccessful) {
                         response.body()?.let {
                             val innerList = it.response.body.items.result.toList()

@@ -74,7 +74,7 @@ class UserInfoDialog : DialogFragment() {
             binding.etEmergencyNumber.setText(emergencyNumber)
         }
         binding.switchLowBus.isChecked = BBasGlobalApplication.prefs.getBoolean("onlyLowBus")
-        binding.cgLocation.check(LocationEnum.codeFind(BBasGlobalApplication.prefs.getInt("location")).id)
+        binding.cgLocation.check(LocationEnum.codeFind(BBasGlobalApplication.prefs.getString("location")).id)
     }
 
     private fun setObserver() {

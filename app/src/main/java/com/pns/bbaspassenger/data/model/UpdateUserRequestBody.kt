@@ -13,5 +13,5 @@ data class UpdateUserRequestBody(
     val onlyLowBus: Boolean,
 
     @SerializedName("cityCode")
-    val location: Int
+    val location: String
 )

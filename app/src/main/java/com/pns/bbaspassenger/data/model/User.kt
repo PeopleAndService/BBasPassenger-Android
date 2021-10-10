@@ -22,5 +22,5 @@ data class User(
     val onlyLowBus: Boolean,
 
     @SerializedName("cityCode")
-    val location: Int?
+    val location: String?
 )

@@ -72,7 +72,7 @@ class BBasSharedPreference(context: Context) {
         setString("userName", user.userName)
         setString("emergencyNumber", user.emergencyNumber?: "")
         setBoolean("onlyLowBus", user.onlyLowBus)
-        setInt("location", user.location?: 0)
+        setString("location", user.location?: "0")
     }
 
     fun updateUserPrefs(user: User) {
@@ -82,8 +82,8 @@ class BBasSharedPreference(context: Context) {
         if (getBoolean("onlyLowBus") != user.onlyLowBus) {
             setBoolean("onlyLowBus", user.onlyLowBus)
         }
-        if (getInt("location") != user.location) {
-            setInt("location", user.location?: 0)
+        if (getString("location") != user.location) {
+            setString("location", user.location?: "0")
         }
     }
 
@@ -95,7 +95,7 @@ class BBasSharedPreference(context: Context) {
             false,
             getString("emergencyNumber"),
             getBoolean("onlyLowBus"),
-            getInt("location")
+            getString("location")
         )
     }
 
