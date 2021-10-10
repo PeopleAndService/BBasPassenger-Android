@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#FF3278ED</color>
+    <color name="colorPrimary75">#CC3278ED</color>
+    <color name="colorPrimary50">#883278ED</color>
     <color name="colorSecondary">#FF006FD1</color>
     <color name="colorWarning">#FFF90400</color>
     <color name="colorBackground">#FF202020</color>
     <color name="colorBackgroundElevated">#FF3C3C3C</color>
     <color name="colorText">#FFFFFFFF</color>
+    <color name="colorText25">#44FFFFFF</color>
 </resources>

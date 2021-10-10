@@ -105,4 +105,19 @@
         <item name="android:paddingEnd">12dp</item>
         <item name="android:paddingBottom">12dp</item>
     </style>
+
+    <!-- Chip styles -->
+    <style name="chip.choice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipSurfaceColor">@color/state_chip_background</item>
+        <item name="android:textAppearance">@style/text.body</item>
+        <item name="android:textColor">@color/state_chip_text</item>
+    </style>
+
+    <!-- Switch styles -->
+    <style name="switch.normal" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/state_thumb</item>
+        <item name="trackTint">@color/state_track</item>
+        <item name="switchMinWidth">56dp</item>
+    </style>
+
 </resources>
