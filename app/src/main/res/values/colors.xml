@@ -9,4 +9,5 @@
     <color name="colorBackgroundElevated">#FFFFFFFF</color>
     <color name="colorText">#FF000000</color>
     <color name="colorText25">#44000000</color>
+    <color name="stationBackGround">#FFF6F6F6</color>
 </resources>

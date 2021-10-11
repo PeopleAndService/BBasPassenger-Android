@@ -39,6 +39,7 @@ class OnBoardRouteAdapter : ListAdapter<RouteItemModel, OnBoardRouteAdapter.OnBo
                         it.width = dpToPx(16.0F, binding.root.context.resources)
                     }
                     binding.icStation.borderColor = ContextCompat.getColor(binding.root.context, R.color.colorSecondary)
+                    binding.icStation.circleBackgroundColor = ContextCompat.getColor(binding.root.context, R.color.stationBackGround)
                 } else if (this.isDuring) {
                     binding.lineStart.setBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.colorPrimary))
                     binding.lineStart.layoutParams?.let {
@@ -52,12 +53,14 @@ class OnBoardRouteAdapter : ListAdapter<RouteItemModel, OnBoardRouteAdapter.OnBo
                     binding.icStation.layoutParams?.let {
                         it.width = dpToPx(16.0F, binding.root.context.resources)
                     }
+                    binding.icStation.circleBackgroundColor = ContextCompat.getColor(binding.root.context, R.color.stationBackGround)
                 } else if (this.isEnd) {
                     binding.lineStart.setBackgroundColor(ContextCompat.getColor(binding.root.context, R.color.colorPrimary))
                     binding.lineStart.layoutParams?.let {
                         it.width = dpToPx(16.0F, binding.root.context.resources)
                     }
                     binding.icStation.borderColor = ContextCompat.getColor(binding.root.context, R.color.colorSecondary)
+                    binding.icStation.circleBackgroundColor = ContextCompat.getColor(binding.root.context, R.color.stationBackGround)
                 }
 
                 if (this.isBusHere) {

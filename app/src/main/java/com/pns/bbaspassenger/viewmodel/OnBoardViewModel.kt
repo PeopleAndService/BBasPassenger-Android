@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pns.bbaspassenger.data.model.Queue
 import com.pns.bbaspassenger.data.model.RouteItemModel
+import com.pns.bbaspassenger.data.model.RouteQueueInfo
 import com.pns.bbaspassenger.data.model.RouteStation
 import com.pns.bbaspassenger.repository.OnBoardRepository
 import com.pns.bbaspassenger.utils.BBasGlobalApplication
@@ -19,6 +20,8 @@ class OnBoardViewModel : ViewModel() {
     private val _route = MutableLiveData<List<RouteStation>>()
     private val _routeItems = MutableLiveData<List<RouteItemModel>>()
 
+    val userQueue: LiveData<Queue> = _userQueue
+    val route: LiveData<List<RouteStation>> = _route
     val routeItemList: LiveData<List<RouteItemModel>> = _routeItems
 
     init {
@@ -34,7 +37,7 @@ class OnBoardViewModel : ViewModel() {
                             val queue = it.result
                             Log.d(TAG, "$queue")
                             _userQueue.postValue(queue)
-                            getRoute(queue.routeId)
+                            initRoute(queue.routeId)
                         }
                     } else {
                         Log.d(TAG, "${response.code()}")
@@ -47,7 +50,7 @@ class OnBoardViewModel : ViewModel() {
         }
     }
 
-    private fun getRoute(routeId: String) {
+    private fun initRoute(routeId: String) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 OnBoardRepository.getRoute(SERVICE_KEY, BBasGlobalApplication.prefs.getString("location"), routeId).let { response ->
