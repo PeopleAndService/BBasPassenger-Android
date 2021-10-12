@@ -5,9 +5,9 @@
     <solid android:color="@color/colorBackgroundElevated" />
 
     <corners
-        android:bottomLeftRadius="@dimen/spacing_image_padding"
-        android:bottomRightRadius="@dimen/spacing_image_padding"
-        android:topLeftRadius="@dimen/spacing_image_padding"
-        android:topRightRadius="@dimen/spacing_image_padding" />
+        android:bottomLeftRadius="24dp"
+        android:bottomRightRadius="24dp"
+        android:topLeftRadius="24dp"
+        android:topRightRadius="24dp" />
 
 </shape>
