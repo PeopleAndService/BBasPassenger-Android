@@ -2,8 +2,10 @@ package com.pns.bbaspassenger.data.source
 
 import com.pns.bbaspassenger.data.model.BaseResponseModel
 import com.pns.bbaspassenger.data.model.GetUserRequestBody
+import com.pns.bbaspassenger.data.model.PostRatingRequestBody
 import com.pns.bbaspassenger.data.model.Queue
 import com.pns.bbaspassenger.data.model.SignUserRequestBody
+import com.pns.bbaspassenger.data.model.UpdateQueueRequestBody
 import com.pns.bbaspassenger.data.model.UpdateUserRequestBody
 import com.pns.bbaspassenger.data.model.User
 import org.json.JSONObject
@@ -43,4 +45,20 @@ interface BBasService {
     suspend fun getQueue(
         @Path("uid") userId: String
     ): Response<BaseResponseModel<Queue>>
+
+    @PUT("queue/0")
+    suspend fun updateQueue(
+        @Body updateQueueRequestBody: UpdateQueueRequestBody
+    ): Response<BaseResponseModel<Queue>>
+
+    @HTTP(method = "DELETE", path = "queue/0", hasBody = true)
+    suspend fun deleteQueue(
+        @Body deleteUserRequestBody: GetUserRequestBody
+    ): Response<BaseResponseModel<JSONObject>>
+
+    // rating
+    @POST("rating/0")
+    suspend fun createRating(
+        @Body postRatingRequestBody: PostRatingRequestBody
+    ): Response<BaseResponseModel<JSONObject>>
 }

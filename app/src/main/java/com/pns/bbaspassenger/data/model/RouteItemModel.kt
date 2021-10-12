@@ -5,11 +5,11 @@ data class RouteItemModel(
     val nodeOrder: Int,
     val nodeName: String,
     val nodeNo: String,
-    val nodeCnt: Int,
-    val isStart: Boolean,
-    val isEnd: Boolean,
-    val isDuring: Boolean
-) {
-    val isFirst = nodeOrder == 1
-    var isBusHere = false
-}
+    var isStart: Boolean,
+    var isEnd: Boolean,
+    var isDuring: Boolean,
+    val isFirst: Boolean,
+    var isBusHere: Boolean,
+    var remainSec: Int,
+    var remainCnt: Int
+)
