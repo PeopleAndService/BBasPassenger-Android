@@ -6,6 +6,13 @@
 
     <data>
 
+        <variable
+            name="view"
+            type="com.pns.bbaspassenger.view.MainActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.pns.bbaspassenger.viewmodel.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,9 +58,10 @@
             android:id="@+id/rv_bus_system"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            android:layout_marginTop="@dimen/spacing_small"
+            busSystemData="@{viewModel.busSystemData}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_search" />
 
@@ -62,9 +70,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/gl_end"
-            android:layout_marginBottom="@dimen/spacing_normal"
+            android:layout_marginBottom="24dp"
             android:contentDescription="@string/btn_refresh"
             android:src="@drawable/ic_refresh"
+            android:onClick="@{() -> view.requestLocation()}"
             app:tint="@null" />
 
         <androidx.constraintlayout.widget.Guideline
