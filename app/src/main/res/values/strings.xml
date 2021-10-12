@@ -33,6 +33,13 @@
     <string name="error_title">예상치 못한 오류가 발생하였습니다.</string>
     <string name="error_message">다시 시도해 주세요.</string>
     <string name="emergency_regex_error">비상연락처 형식이 잘못되었습니다.</string>
+    <string name="cancel_reservation_title">예약 취소 하시겠습니까?</string>
+    <string name="cancel_reservation_fail_title">예약 취소 실패</string>
+    <string name="cancel_reservation_fail_message">예약 취소에 실패했습니다.\n다시 시도해주세요.</string>
+    <string name="nfc_fail_title">NFC 인식 실패</string>
+    <string name="nfc_fail_message">NFC 인식에 실패했습니다.\n다시 태그해주세요.</string>
+    <string name="rating_fail_title">기사 평가 실패</string>
+    <string name="rating_fail_message">기사 평가에 실패했습니다.\n다시 시도해주세요.</string>
 
     <!-- hints -->
     <string name="search_hint">버스 번호 또는 정류장을 검색해주세요.</string>
@@ -66,9 +73,12 @@
     <!-- textview -->
     <string name="riding">승차</string>
     <string name="get_off">하차</string>
+    <string name="nfc_ride">승차 확인</string>
+    <string name="nfc_off">하차 확인</string>
     <string name="riding_station">승차 정류장</string>
     <string name="get_off_station">하차 정류장</string>
     <string name="current_bus_position">현재 버스 위치</string>
+    <string name="load_route_info">노선 정보를 불러오는 중입니다\n잠시 기다려 주세요...</string>
 
     <!-- textview format -->
     <string name="bus_route_format">%s번</string>
@@ -80,14 +90,14 @@
     <string name="bus_number_format_with_parenthesis">(%d)</string>
     <string name="bus_number_with_type_format">%d %s</string>
     <string name="bus_number_with_type_format_parenthesis">(%d %s)</string>
-    <string name="bus_ride_info_format">%d번 버스 (%d)</string>
+    <string name="bus_ride_info_format">%s번 버스 (%s)</string>
     <string name="bus_ride_info_format_with_type">%d번 버스 (%d %s)</string>
     <string name="bus_arrival_info_format">%d분 (%d번째 전)</string>
     <string name="bus_arrival_soon_format">곧 도착 (%d번째 전)</string>
+    <string name="bus_arrival_count_format">%d번째 전</string>
+    <string name="bus_arrival_info_not_found">도착 정보 없음</string>
+    <string name="bus_ride_nfc_message">%s %s번 버스 %s 차량 승차 하셨습니다.</string>
+    <string name="bus_off_nfc_message">%s %s번 버스 %s 차량 하차 하셨습니다.</string>
+    <string name="emergency_message_format">%s님께서 %s번 버스 %s 차량 탑승 중에 %s 정류장 근처에서 긴급 문자를 보내셨습니다.</string>
 
-    <!-- location -->
-    <string name="none">없음</string>
-    <string name="code1">진주</string>
-    <string name="code2">창원</string>
-    <string name="code3">양산</string>
 </resources>
