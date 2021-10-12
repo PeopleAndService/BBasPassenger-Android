@@ -15,57 +15,106 @@
         android:layout_height="match_parent"
         android:padding="@dimen/spacing_normal">
 
-        <TextView
-            android:id="@+id/tv_route_no"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TextView
+                android:id="@+id/tv_route_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/text.h1"
+                android:textColor="@color/colorPrimary"
+                android:text="@{@string/bus_route_format(viewModel.userQueue.routeNo)}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_route_head"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/text.h2"
+                android:textColor="@color/colorText"
+                android:text="@{@string/bus_start_end_format(viewModel.route.get(0).nodeName, viewModel.userQueue.routeDestination)}"
+                android:layout_marginTop="@dimen/spacing_half_normal"
+                app:layout_constraintTop_toBottomOf="@id/tv_route_no"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <ImageView
+                android:id="@+id/btn_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/btn_emergency"
+                android:padding="@dimen/spacing_image_padding"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcv_route"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginVertical="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_route_head"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btn_route" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_route"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rcv_route" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/text.h1"
-            android:textColor="@color/colorPrimary"
-            android:text="@{@string/bus_route_format(viewModel.userQueue.routeNo)}"
+            android:padding="48dp"
+            android:elevation="4dp"
+            android:background="@color/colorBackground"
+            android:visibility="gone"
+            app:layout_constraintVertical_bias="0.4"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_route_head"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="@style/text.h2"
-            android:textColor="@color/colorText"
-            android:text="@{@string/bus_start_end_format(viewModel.route.get(0).nodeName, viewModel.userQueue.routeDestination)}"
-            android:layout_marginTop="@dimen/spacing_half_normal"
-            app:layout_constraintTop_toBottomOf="@id/tv_route_no"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <ImageView
-            android:id="@+id/btn_emergency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/btn_emergency"
-            android:padding="@dimen/spacing_image_padding"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv_route"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginVertical="16dp"
-            app:routeData="@{viewModel.routeItemList}"
-            app:layout_constraintTop_toBottomOf="@id/tv_route_head"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btn_route" />
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/cpi_load"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                app:indicatorColor="@color/colorWarning"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_route"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rcv_route" />
+            <TextView
+                android:id="@+id/tv_load"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/load_route_info"
+                android:textAppearance="@style/text.h2"
+                android:lineSpacingMultiplier="1.5"
+                app:layout_constraintTop_toBottomOf="@id/cpi_load"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
