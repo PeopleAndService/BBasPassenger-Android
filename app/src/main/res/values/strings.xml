@@ -75,9 +75,9 @@
     <string name="current_bus_position">현재 버스 위치</string>
 
     <!-- textview format -->
-    <string name="bus_route_format">%d번</string>
-    <string name="bus_start_end_format">%s-%s</string>
-    <string name="bus_start_end_format_with_parenthesis">(%s-%s)</string>
+    <string name="bus_route_format">%s번</string>
+    <string name="bus_start_end_format">%s - %s</string>
+    <string name="bus_start_end_format_with_parenthesis">(%s - %s)</string>
     <string name="bus_head_to_format">%s 방면</string>
     <string name="bus_head_to_format_with_parenthesis">(%s 방면)</string>
     <string name="distance_format">%dm</string>

@@ -28,5 +28,11 @@ data class Queue(
     val vehicleId: String,
 
     @SerializedName("boardingCheck")
-    val isBoarded: Boolean
+    val isBoarded: Boolean,
+
+    @SerializedName("destination")
+    val routeDestination: String,
+
+    @SerializedName("routeNo")
+    val routeNo: String
 )

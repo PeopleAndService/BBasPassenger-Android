@@ -21,6 +21,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/text.h1"
             android:textColor="@color/colorPrimary"
+            android:text="@{@string/bus_route_format(viewModel.userQueue.routeNo)}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -29,9 +30,10 @@
             android:id="@+id/tv_route_head"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="@style/text.h3"
+            android:textAppearance="@style/text.h2"
             android:textColor="@color/colorText"
-            android:layout_marginTop="@dimen/spacing_small"
+            android:text="@{@string/bus_start_end_format(viewModel.route.get(0).nodeName, viewModel.userQueue.routeDestination)}"
+            android:layout_marginTop="@dimen/spacing_half_normal"
             app:layout_constraintTop_toBottomOf="@id/tv_route_no"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
