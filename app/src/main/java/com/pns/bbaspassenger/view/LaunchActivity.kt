@@ -46,6 +46,8 @@ class LaunchActivity : AppCompatActivity() {
         setPermission()
 
         setObserver()
+
+        BBasGlobalApplication.prefs.setString("busApiKey", getString(R.string.bus_api_key))
     }
 
     private fun login() {
