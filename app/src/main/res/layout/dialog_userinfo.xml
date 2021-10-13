@@ -14,221 +14,227 @@
             type="com.pns.bbaspassenger.data.model.LocationEnum" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/spacing_normal">
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/btn_close"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="6dp"
-            android:src="@drawable/btn_close"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/input_userinfo_title"
-            android:textAppearance="@style/text.h1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_emergency_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="@string/input_emergency_contact_title"
-            android:textAppearance="@style/text.h2"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/til_emergency_number"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_normal"
-            app:errorEnabled="false"
-            app:errorTextColor="@color/colorWarning"
-            app:boxStrokeErrorColor="@color/colorWarning"
-            app:errorTextAppearance="@style/text.body"
-            app:errorIconDrawable="@drawable/ic_clear_text"
-            app:layout_constraintTop_toBottomOf="@id/tv_emergency_number"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            android:padding="@dimen/spacing_normal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_emergency_number"
+            <ImageView
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:src="@drawable/btn_close"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/input_userinfo_title"
+                android:textAppearance="@style/text.h1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_emergency_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/input_emergency_contact_title"
+                android:textAppearance="@style/text.h2"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:id="@+id/til_emergency_number"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="@string/emergency_contact_hint"
-                android:inputType="phone"
-                android:maxLines="1"
-                android:maxLength="11" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_normal"
+                app:errorEnabled="false"
+                app:errorTextColor="@color/colorWarning"
+                app:boxStrokeErrorColor="@color/colorWarning"
+                app:errorTextAppearance="@style/text.body"
+                app:errorIconDrawable="@drawable/ic_clear_text"
+                app:layout_constraintTop_toBottomOf="@id/tv_emergency_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_emergency_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/emergency_contact_hint"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:maxLength="11" />
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/switch_low_bus"
-            style="@style/switch.normal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/low_bus_only_title"
-            android:textAppearance="@style/text.h2"
-            android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@id/til_emergency_number"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
-            android:id="@+id/tv_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/select_location_title"
-            android:layout_marginTop="32dp"
-            android:textAppearance="@style/text.h2"
-            app:layout_constraintTop_toBottomOf="@id/switch_low_bus"
-            app:layout_constraintStart_toStartOf="parent" />
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch_low_bus"
+                style="@style/switch.normal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/low_bus_only_title"
+                android:textAppearance="@style/text.h2"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toBottomOf="@id/til_emergency_number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/cg_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:singleSelection="true"
-            app:chipSpacingHorizontal="@dimen/spacing_normal"
-            app:chipSpacingVertical="@dimen/spacing_normal"
-            android:layout_marginTop="@dimen/spacing_normal"
-            app:layout_constraintTop_toBottomOf="@id/tv_location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip0"
+            <TextView
+                android:id="@+id/tv_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(0).cityName}" />
+                android:text="@string/select_location_title"
+                android:layout_marginTop="32dp"
+                android:textAppearance="@style/text.h2"
+                app:layout_constraintTop_toBottomOf="@id/switch_low_bus"
+                app:layout_constraintStart_toStartOf="parent" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip1"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/cg_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(1).cityName}" />
+                app:singleSelection="true"
+                app:chipSpacingHorizontal="@dimen/spacing_normal"
+                app:chipSpacingVertical="@dimen/spacing_normal"
+                android:layout_marginTop="@dimen/spacing_normal"
+                app:layout_constraintTop_toBottomOf="@id/tv_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip2"
-                android:layout_width="wrap_content"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip0"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(0).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(1).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(2).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(3).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(4).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(5).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(6).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(7).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(8).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(9).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(10).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(11).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(12).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(13).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(14).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(15).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(16).cityName}" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{locationEnum.Companion.positionFind(17).cityName}" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_save"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(2).cityName}" />
+                android:text="@string/btn_save"
+                android:layout_marginTop="32dp"
+                app:layout_constraintTop_toBottomOf="@id/cg_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(3).cityName}" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(4).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(5).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(6).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(7).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(8).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(9).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(10).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(11).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(12).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip13"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(13).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip14"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(14).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(15).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(16).cityName}" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip17"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{locationEnum.Companion.positionFind(17).cityName}" />
-
-        </com.google.android.material.chip.ChipGroup>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_save"
-            android:layout_marginTop="32dp"
-            app:layout_constraintTop_toBottomOf="@id/cg_location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </layout>
