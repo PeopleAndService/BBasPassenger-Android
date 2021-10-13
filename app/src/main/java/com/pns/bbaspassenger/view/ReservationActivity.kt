@@ -36,9 +36,9 @@ class ReservationActivity : AppCompatActivity() {
         binding.viewModel = viewModel
 
         intent.getParcelableExtra<BusSystem>("route").let { route ->
-            route!!.name.split('(').let { name ->
+            route!!.name.split('-').let { name ->
                 binding.routeNum = name[0] + "번"
-                binding.route = name[name.lastIndex].dropLast(1)
+                binding.route = name[name.lastIndex]
             }
 
             viewModel.getBusRoute(route.id)
