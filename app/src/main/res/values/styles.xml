@@ -33,8 +33,8 @@
         <item name="strokeWidth">1dp</item>
         <item name="android:textAppearance">@style/text.body</item>
         <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">24dp</item>
         <item name="android:layout_marginEnd">8dp</item>
@@ -46,8 +46,8 @@
         <item name="cornerRadius">16dp</item>
         <item name="android:textAppearance">@style/text.body</item>
         <item name="android:textColor">#FFFFFF</item>
-        <item name="android:paddingTop">8dp</item>
-        <item name="android:paddingBottom">8dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
         <item name="android:paddingStart">24dp</item>
         <item name="android:paddingEnd">24dp</item>
         <item name="android:layout_width">wrap_content</item>
@@ -102,6 +102,7 @@
     </style>
 
     <style name="dialog.buttonbar" parent="Widget.AppCompat.ButtonBar">
+        <item name="android:paddingTop">6dp</item>
         <item name="android:paddingEnd">12dp</item>
         <item name="android:paddingBottom">12dp</item>
     </style>
