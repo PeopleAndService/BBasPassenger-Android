@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         initLocationClient()
         requestLocation()
 
-        if (BBasGlobalApplication.prefs.getString("emergencyNumber") == "" || BBasGlobalApplication.prefs.getInt("location") == 0) {
+        if (BBasGlobalApplication.prefs.getString("emergencyNumber") == "" || BBasGlobalApplication.prefs.getString("location") == "0") {
             UserInfoDialog().show(supportFragmentManager, "user info dialog")
         }
     }

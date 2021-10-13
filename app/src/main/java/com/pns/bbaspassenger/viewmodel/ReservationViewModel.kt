@@ -5,20 +5,31 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.pns.bbaspassenger.data.model.RouteItemModel
-import com.pns.bbaspassenger.data.model.RouteStation
+import com.pns.bbaspassenger.data.model.ReservationRouteItem
 import com.pns.bbaspassenger.repository.ReservationRepository
+import com.pns.bbaspassenger.utils.BBasGlobalApplication
+import com.pns.bbaspassenger.utils.SingleEvent
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.net.URLDecoder
 
 class ReservationViewModel : ViewModel() {
-    private val _route = MutableLiveData<List<RouteStation>>()
-    private val _routeItems = MutableLiveData<List<RouteItemModel>>()
-    private val _reservation = MutableLiveData<ArrayList<RouteItemModel>>()
+    private val _innerList = mutableListOf<ReservationRouteItem>()
+    private val _routeItems = MutableLiveData<MutableList<ReservationRouteItem>>()
 
-    val routeItemList: LiveData<List<RouteItemModel>> = _routeItems
-    val reservation: LiveData<ArrayList<RouteItemModel>> = _reservation
+    private val _startPos = MutableLiveData<Int?>()
+    private val _startSelect = MutableLiveData<SingleEvent<String>>()
+
+    private val _endPos = MutableLiveData<Int?>()
+    private val _endSelect = MutableLiveData<SingleEvent<String>>()
+
+    val routeItemList: LiveData<MutableList<ReservationRouteItem>> = _routeItems
+
+    val startPos: LiveData<Int?> = _startPos
+    val startSelect: LiveData<SingleEvent<String>> = _startSelect
+
+    val endPos: LiveData<Int?> = _endPos
+    val endSelect: LiveData<SingleEvent<String>> = _endSelect
 
     fun getBusRoute(routeId: String) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -26,28 +37,22 @@ class ReservationViewModel : ViewModel() {
                 ReservationRepository.getRoute(SERVICE_KEY, "38030", routeId).let { response ->
                     if (response.isSuccessful) {
                         response.body()?.let {
-                            val innerList = it.response.body.items.result.toList()
-                            val makeList = ArrayList<RouteItemModel>()
+                            val result = it.response.body.items.result.toList()
 
-                            _route.postValue(innerList)
-
-                            for (station in innerList) {
-                                makeList.add(RouteItemModel(
+                            for (station in result) {
+                                _innerList.add(ReservationRouteItem(
                                     station.nodeId,
                                     station.nodeOrder,
                                     station.nodeName,
                                     station.nodeNo,
-                                    false,
-                                    station.nodeOrder == innerList.size,
+                                    station.nodeOrder == 1,
+                                    station.nodeOrder == result.size,
+                                    isStart = false,
                                     isDuring = false,
-                                    isFirst = false,
-                                    isBusHere = false,
-                                    remainSec = 0,
-                                    remainCnt = 0
+                                    isEnd = false,
                                 ))
                             }
-
-                            _routeItems.postValue(makeList.toList())
+                            _routeItems.postValue(_innerList)
                         }
                     } else {
                         Log.d(TAG, "${response.code()}")
@@ -60,67 +65,51 @@ class ReservationViewModel : ViewModel() {
         }
     }
 
-    fun makeReservation(reservation: ArrayList<RouteItemModel>) {
-        _reservation.value = reservation
-
-        _routeItems.postValue(_routeItems.value?.map { routeItem ->
-            when {
-                routeItem == reservation.first() -> {
-                    RouteItemModel(
-                        routeItem.nodeId,
-                        routeItem.nodeOrder,
-                        routeItem.nodeName,
-                        routeItem.nodeNo,
-                        isStart = true,
-                        isEnd = false,
-                        isDuring = false,
-                        isFirst = false,
-                        isBusHere = true,
-                        remainSec = 0,
-                        remainCnt = 0
-                    )
+    fun handleSelect(position: Int) {
+        if (_startPos.value == null) {
+            if (position != _innerList.size - 1) {
+                _startPos.postValue(position)
+                _startSelect.postValue(SingleEvent("success"))
+            } else {
+                _startSelect.postValue(SingleEvent("startIsLast"))
+            }
+        } else {
+            if (position == _startPos.value) {
+                if (endPos.value == null) {
+                    _startPos.postValue(null)
+                    _startSelect.postValue(SingleEvent("clearStart"))
+                } else {
+                    _startSelect.postValue(SingleEvent("clearEndFirst"))
                 }
-                routeItem == reservation.last() -> {
-                    RouteItemModel(
-                        routeItem.nodeId,
-                        routeItem.nodeOrder,
-                        routeItem.nodeName,
-                        routeItem.nodeNo,
-                        isStart = false,
-                        isEnd = false,
-                        isDuring = false,
-                        isFirst = false,
-                        isBusHere = false,
-                        remainSec = 0,
-                        remainCnt = 0
-                    )
-                }
-                routeItem.nodeOrder in reservation.first().nodeOrder..reservation.last().nodeOrder -> {
-                    RouteItemModel(
-                        routeItem.nodeId,
-                        routeItem.nodeOrder,
-                        routeItem.nodeName,
-                        routeItem.nodeNo,
-                        isStart = false,
-                        isEnd = false,
-                        isDuring = true,
-                        isFirst = false,
-                        isBusHere = false,
-                        remainSec = 0,
-                        remainCnt = 0
-                    )
-                }
-                else -> {
-                    routeItem
+            } else {
+                if (_endPos.value == null) {
+                    if (position < _startPos.value!!) {
+                        _endSelect.postValue(SingleEvent("endBeforeStart"))
+                    } else {
+                        _endPos.postValue(position)
+                        _endSelect.postValue(SingleEvent("success"))
+                    }
+                } else {
+                    if (position == _endPos.value) {
+                        _endPos.postValue(null)
+                        _endSelect.postValue(SingleEvent("clearEnd"))
+                    } else {
+                        _endSelect.postValue(SingleEvent("fullSelected"))
+                    }
                 }
             }
-        })
+        }
+    }
+
+    fun clearAll() {
+        _endPos.postValue(null)
+        _startPos.postValue(null)
     }
 
     companion object {
         private const val TAG = "ReservationViewModel"
         private val SERVICE_KEY = URLDecoder.decode(
-            "",
+            BBasGlobalApplication.prefs.getString("busApiKey"),
             "UTF-8"
         )
     }
