@@ -13,31 +13,17 @@ import com.pns.bbaspassenger.R
 import com.pns.bbaspassenger.data.model.RouteItemModel
 import com.pns.bbaspassenger.databinding.ItemRouteBinding
 
-private const val VIEW_TYPE_ONBOARD = 0
-private const val VIEW_TYPE_RESERVATION = 1
-
-class OnBoardRouteAdapter(
-    private val type: Int = 0,
-    private val makeReservation: ((ArrayList<RouteItemModel>) -> Unit)? = null
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class OnBoardRouteAdapter() : RecyclerView.Adapter<OnBoardRouteAdapter.OnBoardRouteViewHolder>() {
     private val itemList: MutableList<RouteItemModel> = mutableListOf()
-    private val reservation = ArrayList<RouteItemModel>(2)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardRouteAdapter.OnBoardRouteViewHolder {
         val binding = ItemRouteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-        return when (viewType) {
-            VIEW_TYPE_ONBOARD -> OnBoardRouteViewHolder(binding)
-            else -> ReservationViewHolder(binding)
-        }
+        return OnBoardRouteViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (holder is OnBoardRouteViewHolder) {
-            holder.bind(itemList[position])
-        } else if (holder is ReservationViewHolder) {
-            holder.bind(itemList[position])
-        }
+    override fun onBindViewHolder(holder: OnBoardRouteAdapter.OnBoardRouteViewHolder, position: Int) {
+        holder.bind(itemList[position])
     }
 
     override fun getItemCount(): Int {
@@ -45,10 +31,7 @@ class OnBoardRouteAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return when (type) {
-            0 -> VIEW_TYPE_ONBOARD
-            else -> VIEW_TYPE_RESERVATION
-        }
+        return position
     }
 
     fun setList(list: MutableList<RouteItemModel>) {
@@ -144,107 +127,6 @@ class OnBoardRouteAdapter(
 
         private fun dpToPx(dp: Float, resources: Resources): Int {
             return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
-        }
-    }
-
-    inner class ReservationViewHolder(val binding: ItemRouteBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(routeItemModel: RouteItemModel) {
-            binding.data = routeItemModel
-
-            if (reservation.size == 2) {
-                drawRoute(binding, routeItemModel)
-            }
-
-            binding.root.setOnClickListener { view ->
-                when {
-                    reservation.isEmpty() -> {
-                        reservation.add(routeItemModel)
-                        selectStation(binding)
-                    }
-                    reservation.size == 2 -> {
-
-                    }
-                    reservation[0].nodeOrder >= routeItemModel.nodeOrder -> {
-                        Toast.makeText(view.context, "목적지는 출발지보다 뒤에 있어야 합니다.", Toast.LENGTH_SHORT).show()
-                    }
-                    else -> {
-                        reservation.add(routeItemModel)
-                        makeReservation?.invoke(reservation)
-                    }
-                }
-            }
-        }
-    }
-
-    private fun dpToPx(dp: Float, resources: Resources): Int {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, resources.displayMetrics).toInt()
-    }
-
-    private fun selectStation(binding: ItemRouteBinding) {
-        binding.icStation.layoutParams?.let {
-            it.width = dpToPx(32.0F, binding.root.context.resources)
-        }
-
-        Glide.with(binding.icStation).load(R.drawable.ic_bus_arrive).into(binding.icStation)
-        binding.icStation.borderColor =
-            ContextCompat.getColor(binding.root.context, R.color.colorPrimary)
-    }
-
-    private fun drawRoute(binding: ItemRouteBinding, routeItemModel: RouteItemModel) {
-        when {
-            routeItemModel.isStart -> {
-                binding.lineEnd.setBackgroundColor(
-                    ContextCompat.getColor(
-                        binding.root.context,
-                        R.color.colorPrimary
-                    )
-                )
-                binding.lineEnd.layoutParams?.let {
-                    it.width = dpToPx(16.0F, binding.root.context.resources)
-                }
-                binding.icStation.borderColor = ContextCompat.getColor(binding.root.context, R.color.colorSecondary)
-            }
-            routeItemModel.isDuring -> {
-                binding.lineStart.setBackgroundColor(
-                    ContextCompat.getColor(
-                        binding.root.context,
-                        R.color.colorPrimary
-                    )
-                )
-                binding.lineStart.layoutParams?.let {
-                    it.width = dpToPx(16.0F, binding.root.context.resources)
-                }
-                binding.lineEnd.setBackgroundColor(
-                    ContextCompat.getColor(
-                        binding.root.context,
-                        R.color.colorPrimary
-                    )
-                )
-                binding.lineEnd.layoutParams?.let {
-                    it.width = dpToPx(16.0F, binding.root.context.resources)
-                }
-                binding.icStation.borderColor = ContextCompat.getColor(binding.root.context, R.color.colorSecondary)
-                binding.icStation.layoutParams?.let {
-                    it.width = dpToPx(16.0F, binding.root.context.resources)
-                }
-            }
-            routeItemModel.nodeOrder == reservation.last().nodeOrder -> {
-                binding.lineStart.setBackgroundColor(
-                    ContextCompat.getColor(
-                        binding.root.context,
-                        R.color.colorPrimary
-                    )
-                )
-
-                binding.lineStart.layoutParams?.let {
-                    it.width = dpToPx(16.0F, binding.root.context.resources)
-                }
-                binding.icStation.borderColor = ContextCompat.getColor(binding.root.context, R.color.colorSecondary)
-            }
-        }
-
-        if (routeItemModel.isBusHere) {
-            selectStation(binding)
         }
     }
 }
