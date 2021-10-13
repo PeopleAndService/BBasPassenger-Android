@@ -73,8 +73,20 @@
             android:layout_marginBottom="24dp"
             android:contentDescription="@string/btn_refresh"
             android:src="@drawable/ic_refresh"
-            android:onClick="@{() -> view.requestLocation()}"
+            android:onClick="@{() -> view.requestLocation(false)}"
             app:tint="@null" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_result_search"
+            android:textAppearance="@style/text.h2"
+            android:textColor="@color/colorText"
+            android:visibility="@{viewModel.busSystemData.size()}"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_start"
