@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pns.bbaspassenger.R
 import com.pns.bbaspassenger.databinding.ActivityMyPageBinding
@@ -33,6 +34,21 @@ class MyPageActivity : AppCompatActivity() {
                 bundle.putBoolean("isChangeSetting", true)
                 arguments = bundle
             }.show(supportFragmentManager, "change setting")
+        }
+
+        binding.btnApiSource.setOnClickListener {
+            MaterialAlertDialogBuilder(this)
+                .setTitle(getString(R.string.api_source))
+                .setView(R.layout.dialog_api_source)
+                .setPositiveButton(getString(R.string.btn_close)) { dialogInterface, _ ->
+                    dialogInterface.dismiss()
+                }
+                .show()
+        }
+
+        binding.btnOpenSource.setOnClickListener {
+            OssLicensesMenuActivity.setActivityTitle(getString(R.string.open_source_license))
+            startActivity(Intent(this, OssLicensesMenuActivity::class.java))
         }
 
         binding.btnLogout.setOnClickListener {

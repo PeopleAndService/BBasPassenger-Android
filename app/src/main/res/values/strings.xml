@@ -58,6 +58,7 @@
     <string name="btn_quit">앱 종료하기</string>
     <string name="btn_save">저장하기</string>
     <string name="btn_change">변경하기</string>
+    <string name="btn_close">닫기</string>
 
     <!-- my page items -->
     <string name="change_setting">회원 설정 변경</string>
@@ -100,4 +101,10 @@
     <string name="bus_off_nfc_message">%s %s번 버스 %s 차량 하차 하셨습니다.</string>
     <string name="emergency_message_format">%s님께서 %s번 버스 %s 차량 탑승 중에 %s 정류장 근처에서 긴급 문자를 보내셨습니다.</string>
 
+    <!-- api source -->
+    <string name="source_from">공공데이터 포털 국토교통부 국가교통정보</string>
+    <string name="source1">시내버스정보 : 버스노선정보</string>
+    <string name="source2">시내버스정보 : 버스정류소정보</string>
+    <string name="source3">시내버스정보 : 버스위치정보</string>
+    <string name="source4">시내버스정보 : 버스도착정보</string>
 </resources>

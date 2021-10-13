@@ -40,6 +40,8 @@
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.MyPageActivity" />
         <activity android:name=".view.OnBoardActivity" />
+        <activity android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
     </application>
 
 </manifest>
