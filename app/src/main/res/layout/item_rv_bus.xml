@@ -16,7 +16,8 @@
         app:cardElevation="6dp"
         android:layout_marginStart="@dimen/spacing_normal"
         android:layout_marginEnd="@dimen/spacing_normal"
-        android:layout_marginTop="@dimen/spacing_normal">
+        android:layout_marginTop="@dimen/spacing_half_normal"
+        android:layout_marginBottom="@dimen/spacing_half_normal">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

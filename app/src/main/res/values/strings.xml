@@ -83,6 +83,7 @@
     <string name="get_off_station">하차 정류장</string>
     <string name="current_bus_position">현재 버스 위치</string>
     <string name="load_route_info">노선 정보를 불러오는 중입니다\n잠시 기다려 주세요...</string>
+    <string name="no_result_search">검색 결과가 없습니다.</string>
 
     <!-- textview format -->
     <string name="bus_route_format">%s번</string>

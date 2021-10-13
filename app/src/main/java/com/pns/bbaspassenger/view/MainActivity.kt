@@ -1,12 +1,15 @@
 package com.pns.bbaspassenger.view
 
 import android.Manifest
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -31,14 +34,27 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        initLocationClient()
         initBinding()
         setSupportActionBar(binding.tbMain)
         initRecyclerView()
-        initLocationClient()
-        requestLocation()
+        requestLocation(false)
 
         if (BBasGlobalApplication.prefs.getString("emergencyNumber") == "" || BBasGlobalApplication.prefs.getString("location") == "0") {
             UserInfoDialog().show(supportFragmentManager, "user info dialog")
+        }
+
+        binding.etSearch.setOnEditorActionListener { _, action, _ ->
+            var handled = false
+
+            if (action == EditorInfo.IME_ACTION_SEARCH) {
+                requestLocation(true)
+                val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.hideSoftInputFromWindow(binding.etSearch.windowToken, 0)
+                handled = true
+            }
+
+            handled
         }
     }
 
@@ -79,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun requestLocation() {
+    fun requestLocation(flag: Boolean) {
         if (ActivityCompat.checkSelfPermission(
                 applicationContext,
                 Manifest.permission.ACCESS_FINE_LOCATION
@@ -97,12 +113,18 @@ class MainActivity : AppCompatActivity() {
         )
 
         currentTask.addOnSuccessListener { location ->
-            Log.d("TAG", "$location")
-            viewModel.requestStationByLocation(location.latitude, location.longitude)
+            Log.d(TAG, "$location")
+
+            if (flag) {
+                viewModel.search(location.latitude, location.longitude, binding.etSearch.text.toString())
+            } else {
+                viewModel.requestStationByLocation(location.latitude, location.longitude)
+                binding.etSearch.text.clear()
+            }
         }
 
         currentTask.addOnCanceledListener {
-            Log.d("TAG", "get location failure")
+            Log.d(TAG, "get location failure")
         }
     }
 
@@ -121,7 +143,7 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.btn_my_page -> {
-                //TODO 마이페이지 이동
+                Intent(this, MyPageActivity::class.java).run { startActivity(this) }
                 true
             }
             R.id.btn_emergency -> {

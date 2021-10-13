@@ -14,9 +14,15 @@ object BBasBindingAdapter {
         return if (visible) View.GONE else View.VISIBLE
     }
 
+    @BindingConversion
+    @JvmStatic
+    fun convertIntToVisibility(visible: Int): Int {
+        return if (visible == 0) View.VISIBLE else View.GONE
+    }
+
     @BindingAdapter("busSystemData")
     @JvmStatic
-    fun bindBusSystem(recyclerView: RecyclerView, busSystemData: ArrayList<BusSystem>) {
+    fun bindBusSystem(recyclerView: RecyclerView, busSystemData: List<BusSystem>?) {
         val adapter = recyclerView.adapter as BusSystemAdapter
         adapter.submitList(busSystemData)
     }

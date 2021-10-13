@@ -7,6 +7,10 @@
         <variable
             name="busStop"
             type="com.pns.bbaspassenger.data.model.BusSystem" />
+
+        <variable
+            name="busStopName"
+            type="String" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -16,7 +20,8 @@
         app:cardElevation="6dp"
         android:layout_marginStart="@dimen/spacing_normal"
         android:layout_marginEnd="@dimen/spacing_normal"
-        android:layout_marginTop="@dimen/spacing_normal">
+        android:layout_marginTop="@dimen/spacing_half_normal"
+        android:layout_marginBottom="@dimen/spacing_half_normal">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_half_normal"
-                    android:text="@{busStop.name}"
+                    android:text="@{busStopName}"
                     android:textAppearance="@style/text.body"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"

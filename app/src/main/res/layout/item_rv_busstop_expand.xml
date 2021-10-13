@@ -7,6 +7,10 @@
         <variable
             name="bus"
             type="com.pns.bbaspassenger.data.model.BusSystem" />
+
+        <variable
+            name="busName"
+            type="String" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,7 +24,7 @@
             android:id="@+id/tv_bus_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{bus.name}"
+            android:text="@{busName}"
             android:textAppearance="@style/text.body"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

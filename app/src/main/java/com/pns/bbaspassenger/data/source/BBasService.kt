@@ -6,6 +6,7 @@ import com.pns.bbaspassenger.data.model.GetStationRequestBody
 import com.pns.bbaspassenger.data.model.GetUserRequestBody
 import com.pns.bbaspassenger.data.model.PostRatingRequestBody
 import com.pns.bbaspassenger.data.model.Queue
+import com.pns.bbaspassenger.data.model.SearchRequestBody
 import com.pns.bbaspassenger.data.model.SignUserRequestBody
 import com.pns.bbaspassenger.data.model.UpdateQueueRequestBody
 import com.pns.bbaspassenger.data.model.UpdateUserRequestBody
@@ -68,5 +69,11 @@ interface BBasService {
     @POST("getStationInfo")
     suspend fun getStation(
         @Body getStationBody: GetStationRequestBody
-    ): Response<BaseResponseModel<ArrayList<BusSystem>>>
+    ): Response<BaseResponseModel<List<BusSystem>>>
+
+    // search
+    @POST("search")
+    suspend fun search(
+        @Body searchRequestBody: SearchRequestBody
+    ): Response<BaseResponseModel<List<BusSystem>>>
 }

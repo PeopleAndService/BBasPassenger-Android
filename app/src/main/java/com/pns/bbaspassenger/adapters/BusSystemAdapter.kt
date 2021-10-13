@@ -71,6 +71,7 @@ class BusSystemAdapter(val todoItemClick: (BusSystem) -> Unit) :
 
     inner class BusStopViewHolder(private val binding: ItemRvBusstopBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(busStop: BusSystem) {
+            binding.busStopName = busStop.name + " (" + busStop.busList!!.first().name.split("-").last() + ")"
             binding.busStop = busStop
             binding.rvBusList.apply {
                 layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
@@ -90,6 +91,7 @@ class BusSystemAdapter(val todoItemClick: (BusSystem) -> Unit) :
     inner class BusStopExpandViewHolder(private val binding: ItemRvBusstopExpandBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(bus: BusSystem) {
+            binding.busName = bus.name.split("-").joinToString(" - ")
             binding.bus = bus
             binding.executePendingBindings()
 
