@@ -73,6 +73,10 @@ dependencies {
 
     // Google Play Service OpenSource notice
     implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
+    
+    // Fused Location Provider
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
 }
 
 ktlint {

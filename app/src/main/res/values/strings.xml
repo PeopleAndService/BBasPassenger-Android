@@ -41,6 +41,9 @@
     <string name="rating_fail_title">기사 평가 실패</string>
     <string name="rating_fail_message">기사 평가에 실패했습니다.\n다시 시도해주세요.</string>
 
+    <!-- menu titles -->
+    <string name="emergency_title">비상연락</string>
+
     <!-- hints -->
     <string name="search_hint">버스 번호 또는 정류장을 검색해주세요.</string>
     <string name="emergency_contact_needed">필수로 입력하셔야 합니다.</string>
@@ -55,6 +58,7 @@
     <string name="btn_reservation">예약하기</string>
     <string name="btn_cancel_reservation">예약취소</string>
     <string name="btn_rate">평가하기</string>
+    <string name="btn_refresh">새로고침</string>
     <string name="btn_quit">앱 종료하기</string>
     <string name="btn_save">저장하기</string>
     <string name="btn_change">변경하기</string>
@@ -80,6 +84,7 @@
     <string name="get_off_station">하차 정류장</string>
     <string name="current_bus_position">현재 버스 위치</string>
     <string name="load_route_info">노선 정보를 불러오는 중입니다\n잠시 기다려 주세요...</string>
+    <string name="no_result_search">검색 결과가 없습니다.</string>
 
     <!-- textview format -->
     <string name="bus_route_format">%s번</string>

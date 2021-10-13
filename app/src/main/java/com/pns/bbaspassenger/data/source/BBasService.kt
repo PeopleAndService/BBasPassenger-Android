@@ -1,9 +1,12 @@
 package com.pns.bbaspassenger.data.source
 
 import com.pns.bbaspassenger.data.model.BaseResponseModel
+import com.pns.bbaspassenger.data.model.BusSystem
+import com.pns.bbaspassenger.data.model.GetStationRequestBody
 import com.pns.bbaspassenger.data.model.GetUserRequestBody
 import com.pns.bbaspassenger.data.model.PostRatingRequestBody
 import com.pns.bbaspassenger.data.model.Queue
+import com.pns.bbaspassenger.data.model.SearchRequestBody
 import com.pns.bbaspassenger.data.model.SignUserRequestBody
 import com.pns.bbaspassenger.data.model.UpdateQueueRequestBody
 import com.pns.bbaspassenger.data.model.UpdateUserRequestBody
@@ -61,4 +64,16 @@ interface BBasService {
     suspend fun createRating(
         @Body postRatingRequestBody: PostRatingRequestBody
     ): Response<BaseResponseModel<JSONObject>>
+
+    // station
+    @POST("getStationInfo")
+    suspend fun getStation(
+        @Body getStationBody: GetStationRequestBody
+    ): Response<BaseResponseModel<List<BusSystem>>>
+
+    // search
+    @POST("search")
+    suspend fun search(
+        @Body searchRequestBody: SearchRequestBody
+    ): Response<BaseResponseModel<List<BusSystem>>>
 }
