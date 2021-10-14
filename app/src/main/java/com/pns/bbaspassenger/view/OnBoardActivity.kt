@@ -92,6 +92,10 @@ class OnBoardActivity : AppCompatActivity() {
 
     private fun setObserver() {
         viewModel.userQueue.observe(this) {
+            if (viewModel.loaded.value == null) {
+                viewModel.initRoute(it)
+                viewModel.updateArriveInfo(it)
+            }
             if (it.boardState > 0) {
                 binding.btnRoute.text = getString(R.string.btn_rate)
                 binding.btnRoute.setOnClickListener {
@@ -131,14 +135,14 @@ class OnBoardActivity : AppCompatActivity() {
                         .show()
                 }
             }
-            viewModel.initRoute(it)
-            viewModel.updateArriveInfo(it)
         }
 
         viewModel.loaded.observe(this) {
             it.getContentIfNotHandled()?.let { content ->
                 if (content) {
                     viewModel.updateBusPosition()
+                } else {
+                    finish()
                 }
             }
         }
@@ -298,10 +302,10 @@ class OnBoardActivity : AppCompatActivity() {
         }
     }
 
-    private fun readNFCDialog(status: Int) {
-        if (status == 1) {
-            viewModel.updateState(status)
-        } else {
+    private fun readNFCDialog(readState: Int) {
+        if (readState == 1 && status == 0) {
+            viewModel.updateState(readState)
+        } else if (readState == 2 && status == 1) {
             viewModel.deleteQueue()
         }
     }
