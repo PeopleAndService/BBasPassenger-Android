@@ -130,9 +130,9 @@ class OnBoardActivity : AppCompatActivity() {
                         .setCancelable(false)
                         .show()
                 }
-                viewModel.initRoute(it)
-                viewModel.updateArriveInfo(it)
             }
+            viewModel.initRoute(it)
+            viewModel.updateArriveInfo(it)
         }
 
         viewModel.loaded.observe(this) {
