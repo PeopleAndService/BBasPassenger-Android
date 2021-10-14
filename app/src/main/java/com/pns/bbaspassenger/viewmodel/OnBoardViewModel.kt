@@ -147,7 +147,7 @@ class OnBoardViewModel : ViewModel() {
             try {
                 while (_busPosition.value ?: 1 < queue.startStationOrder) {
                     getArriveInfo(queue)
-                    delay(10000)
+                    delay(5000)
                 }
             } catch (e: IOException) {
                 Log.e(TAG, "${e.message}")
@@ -161,7 +161,7 @@ class OnBoardViewModel : ViewModel() {
             try {
                 while (_busPosition.value == null || _busPosition.value ?: 1 < _userQueue.value?.endStationOrder ?: 1) {
                     getBusPosition()
-                    delay(10000)
+                    delay(5000)
                 }
             } catch (e: IOException) {
                 Log.e(TAG, "${e.message}")
@@ -269,7 +269,7 @@ class OnBoardViewModel : ViewModel() {
                             if (result.success) {
                                 val queue = result.result
                                 Log.d(TAG, "Queue : $queue")
-                                // _userQueue.postValue(queue)
+                                _userQueue.postValue(queue)
                                 _passengerBoard.postValue(SingleEvent(true))
                             } else {
                                 Log.d(TAG, "$response")
