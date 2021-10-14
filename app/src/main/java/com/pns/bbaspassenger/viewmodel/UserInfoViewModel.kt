@@ -24,12 +24,16 @@ class UserInfoViewModel : ViewModel() {
                 UserRepository.updateUser(requestBody).let { response ->
                     if (response.isSuccessful) {
                         response.body()?.let {
-                            val userResult = it.result
-                            Log.d(TAG, "result : $userResult")
+                            if (it.success) {
+                                val userResult = it.result
+                                Log.d(TAG, "result : $userResult")
 
-                            BBasGlobalApplication.prefs.updateUserPrefs(userResult)
-                            Log.d(TAG, "result : ${BBasGlobalApplication.prefs.getUserPrefs()}")
-                            _success.postValue(true)
+                                BBasGlobalApplication.prefs.updateUserPrefs(userResult)
+                                Log.d(TAG, "result : ${BBasGlobalApplication.prefs.getUserPrefs()}")
+                                _success.postValue(true)
+                            } else {
+                                _success.postValue(false)
+                            }
                         }
                     } else {
                         Log.d(TAG, "result : ${response.code()}")
