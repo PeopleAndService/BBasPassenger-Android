@@ -10,10 +10,28 @@
     <string name="nfc_title">NFC 설정</string>
     <string name="nfc_message">앱 사용을 위해 NFC 모드를 기본 모드로 반드시 설정해주세요.\n확인 버튼을 누르면 설정으로 이동합니다.\nNFC가 기본 모드가 아닌 경우 앱이 종료됩니다.</string>
     <string name="nfc_quit_app_message">NFC 기본 모드가 꺼져있어 앱이 종료됩니다.</string>
+    <string name="board_info_exist_title">탑승 예약 정보 존재</string>
+    <string name="board_info_exist_message">진행 중인 탑승 정보가 존재합니다.\n계속 하시겠습니까?\n[확인]을 누르면 이어할 수 있습니다.\n[취소]를 누르면 삭제됩니다.</string>
+    <string name="error_detect_title">오류 발생</string>
+    <string name="error_detect_message">예상치 못한 오류가 발생하여 앱이 종료됩니다.</string>
 
     <!-- login -->
     <string name="login_failed_title">로그인 실패</string>
     <string name="login_failed_message">로그인에 실패하였습니다.\n다시 시도해주세요.</string>
+
+    <!-- reservation -->
+    <string name="start_station_select">승차 정류장 선택 완료</string>
+    <string name="start_station_error_title">승차 정류장 선택 오류</string>
+    <string name="start_station_last_error_message">승차 정류장이 종점입니다!다시 선택해주세요.</string>
+    <string name="station_clear_end_error_message">하차 정류장부터 선택해제 해주세요.\n다시 선택해주세요.</string>
+    <string name="station_select_error_title">정류장 선택 오류</string>
+    <string name="start_station_unselect">승차 정류장 선택 해제</string>
+    <string name="end_station_select">하차 정류장 선택 완료</string>
+    <string name="end_station_unselect">하차 정류장 선택 해제</string>
+    <string name="end_station_error_title">하차 정류장 선택 오류</string>
+    <string name="end_station_before_start">하차 정류장이 승차 정류장보다 전에 있습니다!\n다시 선택해주세요.</string>
+    <string name="station_full_select_title">선택 완료</string>
+    <string name="station_full_select_message">승차 정류장과 하차 정류장 모두 선택하셨습니다.\n선택 해제 후 다시 시도해주세요.</string>
 
     <!-- activity titles -->
     <string name="reservation_title">버스 시스템</string>

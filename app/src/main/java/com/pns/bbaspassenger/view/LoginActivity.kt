@@ -67,8 +67,8 @@ class LoginActivity : AppCompatActivity() {
                 when(res) {
                     "exist" -> {
                         MaterialAlertDialogBuilder(this)
-                            .setTitle("탑승 예약 정보 존재")
-                            .setMessage("진행 중인 탑승 정보가 존재합니다.\n계속 하시겠습니까?\n[확인]을 누르면 이어할 수 있습니다.\n[취소]를 누르면 삭제됩니다.")
+                            .setTitle(getString(R.string.board_info_exist_title))
+                            .setMessage(R.string.board_info_exist_message)
                             .setPositiveButton(getString(R.string.btn_confirm)) { dI, _ ->
                                 dI.dismiss()
                                 startBoardActivity()
@@ -85,8 +85,8 @@ class LoginActivity : AppCompatActivity() {
                     }
                     "readFail" -> {
                         MaterialAlertDialogBuilder(this)
-                            .setTitle("오류 발생")
-                            .setMessage("예상치 못한 오류가 발생하여 앱이 종료됩니다.")
+                            .setTitle(getString(R.string.error_detect_title))
+                            .setMessage(getString(R.string.error_detect_message))
                             .setPositiveButton(getString(R.string.btn_confirm)) { dI, _ ->
                                 dI.dismiss()
                                 finish()
@@ -104,8 +104,8 @@ class LoginActivity : AppCompatActivity() {
                     startMainActivity()
                 } else {
                     MaterialAlertDialogBuilder(this)
-                        .setTitle("오류 발생")
-                        .setMessage("예상치 못한 오류가 발생하여 앱이 종료됩니다.")
+                        .setTitle(getString(R.string.error_detect_title))
+                        .setMessage(getString(R.string.error_detect_message))
                         .setPositiveButton(getString(R.string.btn_confirm)) { dI, _ ->
                             dI.dismiss()
                             finish()

@@ -94,25 +94,25 @@ class ReservationActivity : AppCompatActivity() {
                 when(res) {
                     "startIsLast" -> {
                         MaterialAlertDialogBuilder(this)
-                            .setTitle("승차 정류장 선택 오류")
-                            .setMessage("승차 정류장이 종점입니다!\n다시 선택해주세요.")
-                            .setPositiveButton("확인") { dialogInterface, _ ->
+                            .setTitle(getString(R.string.start_station_error_title))
+                            .setMessage(getString(R.string.start_station_last_error_message))
+                            .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
                                 dialogInterface.dismiss()
                             }
                             .setCancelable(false)
                             .show()
                     }
                     "success" -> {
-                        Toast.makeText(this, "승차 정류장 선택 완료", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.start_station_select), Toast.LENGTH_SHORT).show()
                     }
                     "clearStart" -> {
-                        Toast.makeText(this, "승차 정류장 선택 해제", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.start_station_unselect), Toast.LENGTH_SHORT).show()
                     }
                     "clearEndFirst" -> {
                         MaterialAlertDialogBuilder(this)
-                            .setTitle("정류장 선택 오류")
-                            .setMessage("하차 정류장부터 선택해제 해주세요.\n다시 선택해주세요.")
-                            .setPositiveButton("확인") { dialogInterface, _ ->
+                            .setTitle(getString(R.string.station_select_error_title))
+                            .setMessage(getString(R.string.station_clear_end_error_message))
+                            .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
                                 dialogInterface.dismiss()
                             }
                             .setCancelable(false)
@@ -127,27 +127,27 @@ class ReservationActivity : AppCompatActivity() {
                 when(res) {
                     "endBeforeStart" -> {
                         MaterialAlertDialogBuilder(this)
-                            .setTitle("하차 정류장 선택 오류")
-                            .setMessage("하차 정류장이 승차 정류장보다 전에 있습니다!\n다시 선택해주세요.")
-                            .setPositiveButton("확인") { dialogInterface, _ ->
+                            .setTitle(getString(R.string.end_station_error_title))
+                            .setMessage(getString(R.string.end_station_before_start))
+                            .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
                                 dialogInterface.dismiss()
                             }
                             .setCancelable(false)
                             .show()
                     }
                     "success" -> {
-                        Toast.makeText(this, "하차 정류장 선택 완료", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.end_station_select), Toast.LENGTH_SHORT).show()
                         binding.btnReservation.visibility = View.VISIBLE
                     }
                     "clearEnd" -> {
-                        Toast.makeText(this, "하차 정류장 선택 해제", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.end_station_unselect), Toast.LENGTH_SHORT).show()
                         binding.btnReservation.visibility = View.GONE
                     }
                     "fullSelected" -> {
                         MaterialAlertDialogBuilder(this)
-                            .setTitle("선택 완료")
-                            .setMessage("승차 정류장과 하차 정류장 모두 선택하셨습니다.\n선택 해제 후 다시 시도해주세요.")
-                            .setPositiveButton("확인") { dialogInterface, _ ->
+                            .setTitle(getString(R.string.station_full_select_title))
+                            .setMessage(getString(R.string.station_full_select_message))
+                            .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
                                 dialogInterface.dismiss()
                             }
                             .setCancelable(false)
