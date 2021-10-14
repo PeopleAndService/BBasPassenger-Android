@@ -198,9 +198,26 @@ class OnBoardActivity : AppCompatActivity() {
                             )
                             .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
                                 dialogInterface.dismiss()
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
-                                finish()
+                                viewModel.onClick { routeId, routeNo, vehicleId ->
+                                    val dialogBinding = DialogRatingBinding.inflate(layoutInflater)
+                                    MaterialAlertDialogBuilder(this)
+                                        .setTitle(getString(R.string.rate_title))
+                                        .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
+                                            Log.d("TAG", "${dialogBinding.rbDriver.rating}")
+                                            viewModel.doRating(vehicleId, dialogBinding.rbDriver.rating.toDouble())
+                                            dialogInterface.dismiss()
+                                        }
+                                        .setNegativeButton(getString(R.string.btn_no)) { dialogInterface, _ ->
+                                            dialogInterface.dismiss()
+                                            finish()
+                                        }
+                                        .setCancelable(false)
+                                        .apply {
+                                            dialogBinding.tvInfo.text = getString(R.string.bus_ride_info_format, routeNo, vehicleId)
+                                            setView(dialogBinding.root)
+                                        }
+                                        .show()
+                                }
                             }
                             .show()
                     } else {
@@ -234,6 +251,11 @@ class OnBoardActivity : AppCompatActivity() {
             it.getContentIfNotHandled()?.let { res ->
                 if (res) {
                     binding.btnRoute.visibility = View.GONE
+                    if (status == 2) {
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                 } else {
                     MaterialAlertDialogBuilder(this)
                         .setTitle(getString(R.string.rating_fail_title))
@@ -303,9 +325,9 @@ class OnBoardActivity : AppCompatActivity() {
     }
 
     private fun readNFCDialog(readState: Int) {
-        if (readState == 1 && status == 0) {
+        if (readState == 1) {
             viewModel.updateState(readState)
-        } else if (readState == 2 && status == 1) {
+        } else if (readState == 2) {
             viewModel.deleteQueue()
         }
     }
