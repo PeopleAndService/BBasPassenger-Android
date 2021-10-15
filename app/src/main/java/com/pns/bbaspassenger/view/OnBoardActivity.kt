@@ -226,8 +226,6 @@ class OnBoardActivity : BaseActivity() {
                             }
                             .show()
                     } else {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
                         finish()
                     }
                 } else {
@@ -257,8 +255,6 @@ class OnBoardActivity : BaseActivity() {
                 if (res) {
                     binding.btnRoute.visibility = View.GONE
                     if (status == 2) {
-                        val intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
                         finish()
                     }
                 } else {

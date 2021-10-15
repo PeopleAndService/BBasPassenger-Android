@@ -144,7 +144,9 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun startBoardActivity() {
+        val mainIntent = Intent(this, MainActivity::class.java)
         val intent = Intent(this, OnBoardActivity::class.java)
+        startActivity(mainIntent)
         startActivity(intent)
         finish()
     }

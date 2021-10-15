@@ -166,7 +166,7 @@ class ReservationRouteAdapter(val click: (Int) -> Unit) :
                 }
                 binding.icStation.borderColor = ContextCompat.getColor(binding.root.context, R.color.colorText)
                 binding.icStation.circleBackgroundColor =
-                    ContextCompat.getColor(binding.root.context, R.color.stationBackGround)
+                    ContextCompat.getColor(binding.root.context, R.color.colorBackground)
                 binding.icStation.layoutParams?.let {
                     it.width = dpToPx(32.0F, binding.root.context.resources)
                 }
