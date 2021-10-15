@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RemoteDataSource {
-    private const val BBAS_URL = "http://172.18.3.23:8000/v1/pnsApp/"
+    private const val BBAS_URL = "http://203.255.3.138:8004/v1/pnsApp/"
     private const val BUS_OPEN_URL = "http://openapi.tago.go.kr/openapi/service/"
 
     private val gson = GsonBuilder().setLenient().create()
