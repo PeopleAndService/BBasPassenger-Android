@@ -9,12 +9,6 @@ data class User(
     @SerializedName("name")
     val userName: String,
 
-    @SerializedName("pushToken")
-    val pushToken: String?,
-
-    @SerializedName("pushSetting")
-    val pushSetting: Boolean,
-
     @SerializedName("emergencyPhone")
     val emergencyNumber: String?,
 
