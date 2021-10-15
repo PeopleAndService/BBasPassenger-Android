@@ -21,7 +21,6 @@ class MyPageViewModel : ViewModel() {
 
     fun withDraw() {
         viewModelScope.launch(Dispatchers.IO) {
-            // val requestBody = GetUserRequestBody("asdkfjppp22")
             val requestBody = GetUserRequestBody(BBasGlobalApplication.prefs.getString("userId"))
             try {
                 UserRepository.deleteUser(requestBody).let { response ->

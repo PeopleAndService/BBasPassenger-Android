@@ -91,8 +91,6 @@ class BBasSharedPreference(context: Context) {
         return User(
             getString("userId"),
             getString("userName"),
-            "",
-            false,
             getString("emergencyNumber"),
             getBoolean("onlyLowBus"),
             getString("location")

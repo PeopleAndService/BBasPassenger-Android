@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="view"
+            type="com.pns.bbaspassenger.view.ReservationActivity" />
+
+        <variable
             name="routeNum"
             type="String" />
 
@@ -77,9 +81,10 @@
             android:layout_marginBottom="@dimen/spacing_normal"
             android:visibility="gone"
             android:text="@string/btn_reservation"
+            android:onClick="@{() -> view.showDialog()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintEnd_toEndOf="@id/gl_end"/>
+            app:layout_constraintEnd_toEndOf="@id/gl_end" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_start"

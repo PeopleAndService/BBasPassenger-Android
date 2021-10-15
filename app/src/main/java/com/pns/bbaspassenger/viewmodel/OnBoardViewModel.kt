@@ -54,17 +54,23 @@ class OnBoardViewModel : ViewModel() {
                 OnBoardRepository.getQueue(BBasGlobalApplication.prefs.getString("userId")).let { response ->
                     if (response.isSuccessful) {
                         response.body()?.let {
-                            val queue = it.result
-                            Log.d(TAG, "Queue : $queue")
-                            _userQueue.postValue(queue)
+                            if (it.success) {
+                                val queue = it.result
+                                Log.d(TAG, "Queue : $queue")
+                                _userQueue.postValue(queue)
+                            } else {
+                                _loaded.postValue(SingleEvent(false))
+                            }
                         }
                     } else {
                         Log.d(TAG, "${response.code()}")
+                        _loaded.postValue(SingleEvent(false))
                     }
                 }
             } catch (e: Exception) {
                 Log.e(TAG, "${e.message}")
                 e.printStackTrace()
+                _loaded.postValue(SingleEvent(false))
             }
         }
     }
@@ -141,7 +147,7 @@ class OnBoardViewModel : ViewModel() {
             try {
                 while (_busPosition.value ?: 1 < queue.startStationOrder) {
                     getArriveInfo(queue)
-                    delay(10000)
+                    delay(5000)
                 }
             } catch (e: IOException) {
                 Log.e(TAG, "${e.message}")
@@ -155,7 +161,7 @@ class OnBoardViewModel : ViewModel() {
             try {
                 while (_busPosition.value == null || _busPosition.value ?: 1 < _userQueue.value?.endStationOrder ?: 1) {
                     getBusPosition()
-                    delay(10000)
+                    delay(5000)
                 }
             } catch (e: IOException) {
                 Log.e(TAG, "${e.message}")
@@ -236,12 +242,12 @@ class OnBoardViewModel : ViewModel() {
         }
     }
 
-    fun sendMessage(viewSend : (String, String, String, String) -> Unit) {
+    fun sendMessage(stationSend : (String, String, String, String) -> Unit, locationSend : () -> Unit) {
         _userQueue.value?.let { queue ->
-            if (queue.boardState >= 0) {
-                viewSend(BBasGlobalApplication.prefs.getString("userName"), queue.routeNo, queue.vehicleId, _routeItemList[0].nodeName)
+            if (queue.boardState > 0) {
+                stationSend(BBasGlobalApplication.prefs.getString("userName"), queue.routeNo, queue.vehicleId, _routeItemList[0].nodeName)
             } else {
-                // 위치 정보로 보내기
+                locationSend()
             }
         }
     }

@@ -56,11 +56,63 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.loginSuccess.observe(this) {
             if (it) {
-                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                startActivity(intent)
-                finish()
+                viewModel.getQueue()
             } else {
                 loginFailed()
+            }
+        }
+
+        viewModel.isQueueExist.observe(this) {
+            it.getContentIfNotHandled()?.let { res ->
+                when(res) {
+                    "exist" -> {
+                        MaterialAlertDialogBuilder(this)
+                            .setTitle(getString(R.string.board_info_exist_title))
+                            .setMessage(R.string.board_info_exist_message)
+                            .setPositiveButton(getString(R.string.btn_confirm)) { dI, _ ->
+                                dI.dismiss()
+                                startBoardActivity()
+                            }
+                            .setNegativeButton(getString(R.string.btn_cancel)) { dI, _ ->
+                                viewModel.deleteQueue()
+                                dI.dismiss()
+                            }
+                            .setCancelable(false)
+                            .show()
+                    }
+                    "noInfo" -> {
+                        startMainActivity()
+                    }
+                    "readFail" -> {
+                        MaterialAlertDialogBuilder(this)
+                            .setTitle(getString(R.string.error_detect_title))
+                            .setMessage(getString(R.string.error_detect_message))
+                            .setPositiveButton(getString(R.string.btn_confirm)) { dI, _ ->
+                                dI.dismiss()
+                                finish()
+                            }
+                            .setCancelable(false)
+                            .show()
+                    }
+                }
+            }
+        }
+
+        viewModel.queueDelete.observe(this) {
+            it.getContentIfNotHandled()?.let { res ->
+                if (res) {
+                    startMainActivity()
+                } else {
+                    MaterialAlertDialogBuilder(this)
+                        .setTitle(getString(R.string.error_detect_title))
+                        .setMessage(getString(R.string.error_detect_message))
+                        .setPositiveButton(getString(R.string.btn_confirm)) { dI, _ ->
+                            dI.dismiss()
+                            finish()
+                        }
+                        .setCancelable(false)
+                        .show()
+                }
             }
         }
     }
@@ -83,6 +135,18 @@ class LoginActivity : AppCompatActivity() {
             }
             .setCancelable(false)
             .show()
+    }
+
+    private fun startMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun startBoardActivity() {
+        val intent = Intent(this, OnBoardActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     companion object {

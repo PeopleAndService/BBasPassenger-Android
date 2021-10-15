@@ -82,8 +82,8 @@ class MyPageActivity : AppCompatActivity() {
 
     private fun setObserver() {
         viewModel.success.observe(this) {
-            it.getContentIfNotHandled()?.let { data ->
-                if (data) {
+            it.getContentIfNotHandled()?.let { res ->
+                if (res) {
                     withDraw()
                 } else {
                     MaterialAlertDialogBuilder(this)

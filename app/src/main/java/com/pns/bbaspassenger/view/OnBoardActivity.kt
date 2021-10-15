@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pns.bbaspassenger.R
@@ -24,7 +23,7 @@ import com.pns.bbaspassenger.viewmodel.OnBoardViewModel
 import java.nio.charset.Charset
 import java.util.Arrays
 
-class OnBoardActivity : AppCompatActivity() {
+class OnBoardActivity : BaseActivity() {
     private lateinit var binding: ActivityOnBoardBinding
     private val viewModel: OnBoardViewModel by viewModels()
 
@@ -50,7 +49,7 @@ class OnBoardActivity : AppCompatActivity() {
         setObserver()
 
         binding.btnEmergency.setOnClickListener {
-            viewModel.sendMessage { userName, routeNo, vehicleId, nodeNm ->
+            viewModel.sendMessage({ userName, routeNo, vehicleId, nodeNm ->
                 val smsUri = Uri.parse("tel:${BBasGlobalApplication.prefs.getString("emergencyNumber")}")
                 val intent = Intent(Intent.ACTION_VIEW, smsUri).apply {
                     putExtra("address", BBasGlobalApplication.prefs.getString("emergencyNumber"))
@@ -61,7 +60,9 @@ class OnBoardActivity : AppCompatActivity() {
                     type = "vnd.android-dir/mms-sms"
                 }
                 startActivity(intent)
-            }
+            }, {
+                sendEmergencyMessage()
+            })
         }
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
@@ -79,6 +80,10 @@ class OnBoardActivity : AppCompatActivity() {
         nfcAdapter.disableForegroundDispatch(this)
     }
 
+    override fun onBackPressed() {
+
+    }
+
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 
@@ -92,6 +97,10 @@ class OnBoardActivity : AppCompatActivity() {
 
     private fun setObserver() {
         viewModel.userQueue.observe(this) {
+            if (viewModel.loaded.value == null) {
+                viewModel.initRoute(it)
+                viewModel.updateArriveInfo(it)
+            }
             if (it.boardState > 0) {
                 binding.btnRoute.text = getString(R.string.btn_rate)
                 binding.btnRoute.setOnClickListener {
@@ -130,8 +139,6 @@ class OnBoardActivity : AppCompatActivity() {
                         .setCancelable(false)
                         .show()
                 }
-                viewModel.initRoute(it)
-                viewModel.updateArriveInfo(it)
             }
         }
 
@@ -139,6 +146,8 @@ class OnBoardActivity : AppCompatActivity() {
             it.getContentIfNotHandled()?.let { content ->
                 if (content) {
                     viewModel.updateBusPosition()
+                } else {
+                    finish()
                 }
             }
         }
@@ -194,9 +203,26 @@ class OnBoardActivity : AppCompatActivity() {
                             )
                             .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
                                 dialogInterface.dismiss()
-                                val intent = Intent(this, MainActivity::class.java)
-                                startActivity(intent)
-                                finish()
+                                viewModel.onClick { routeId, routeNo, vehicleId ->
+                                    val dialogBinding = DialogRatingBinding.inflate(layoutInflater)
+                                    MaterialAlertDialogBuilder(this)
+                                        .setTitle(getString(R.string.rate_title))
+                                        .setPositiveButton(getString(R.string.btn_confirm)) { dialogInterface, _ ->
+                                            Log.d("TAG", "${dialogBinding.rbDriver.rating}")
+                                            viewModel.doRating(vehicleId, dialogBinding.rbDriver.rating.toDouble())
+                                            dialogInterface.dismiss()
+                                        }
+                                        .setNegativeButton(getString(R.string.btn_no)) { dialogInterface, _ ->
+                                            dialogInterface.dismiss()
+                                            finish()
+                                        }
+                                        .setCancelable(false)
+                                        .apply {
+                                            dialogBinding.tvInfo.text = getString(R.string.bus_ride_info_format, routeNo, vehicleId)
+                                            setView(dialogBinding.root)
+                                        }
+                                        .show()
+                                }
                             }
                             .show()
                     } else {
@@ -230,6 +256,11 @@ class OnBoardActivity : AppCompatActivity() {
             it.getContentIfNotHandled()?.let { res ->
                 if (res) {
                     binding.btnRoute.visibility = View.GONE
+                    if (status == 2) {
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
                 } else {
                     MaterialAlertDialogBuilder(this)
                         .setTitle(getString(R.string.rating_fail_title))
@@ -298,10 +329,10 @@ class OnBoardActivity : AppCompatActivity() {
         }
     }
 
-    private fun readNFCDialog(status: Int) {
-        if (status == 1) {
-            viewModel.updateState(status)
-        } else {
+    private fun readNFCDialog(readState: Int) {
+        if (readState == 1) {
+            viewModel.updateState(readState)
+        } else if (readState == 2) {
             viewModel.deleteQueue()
         }
     }
