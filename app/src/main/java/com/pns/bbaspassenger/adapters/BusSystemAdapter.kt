@@ -91,7 +91,7 @@ class BusSystemAdapter(val todoItemClick: (BusSystem) -> Unit) :
     inner class BusStopExpandViewHolder(private val binding: ItemRvBusstopExpandBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(bus: BusSystem) {
-            binding.busName = bus.name.split("-").joinToString(" - ")
+            binding.busName = bus.name.split("-").joinToString(" 번 ")
             binding.bus = bus
             binding.executePendingBindings()
 

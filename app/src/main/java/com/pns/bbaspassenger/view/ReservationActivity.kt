@@ -7,7 +7,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pns.bbaspassenger.R
@@ -108,7 +107,7 @@ class ReservationActivity : BaseActivity() {
                             .show()
                     }
                     "success" -> {
-                        Toast.makeText(this, getString(R.string.start_station_select), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.start_station_select, mAdapter.getStart()?.nodeName), Toast.LENGTH_SHORT).show()
                     }
                     "clearStart" -> {
                         Toast.makeText(this, getString(R.string.start_station_unselect), Toast.LENGTH_SHORT).show()
@@ -141,7 +140,7 @@ class ReservationActivity : BaseActivity() {
                             .show()
                     }
                     "success" -> {
-                        Toast.makeText(this, getString(R.string.end_station_select), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.end_station_select, mAdapter.getEnd()?.nodeName), Toast.LENGTH_SHORT).show()
                         binding.btnReservation.visibility = View.VISIBLE
                     }
                     "clearEnd" -> {

@@ -1,6 +1,5 @@
 package com.pns.bbaspassenger.adapters
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -41,8 +40,16 @@ class BusSelectAdapter(private val start: Int, private val onClickItem: (BusLoca
 
             binding.root.setOnClickListener {
                 onClickItem(busLocation)
-                binding.cvItem.setCardBackgroundColor(Color.GRAY)
-
+                binding.cvItem.setStrokeColor(binding.root.context.getColorStateList(R.color.state_bus_select))
+                binding.root.contentDescription = binding.root.context.getString(
+                    R.string.des_check_reservation_bus,
+                    busLocation.nodeName,
+                    busLocation.vehicleId.takeLast(4),
+                    binding.root.context.getString(
+                        R.string.bus_arrival_count_format,
+                        (start + 1) - busLocation.nodeOrder
+                    )
+                )
                 for (i in 0 until itemCount) {
                     if (viewHolderList[i] != this) viewHolderList[i].binding.cvItem.setCardBackgroundColor(
                         ContextCompat.getColor(binding.root.context, R.color.colorBackgroundElevated)
