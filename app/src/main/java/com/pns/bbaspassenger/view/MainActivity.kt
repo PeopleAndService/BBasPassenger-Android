@@ -64,7 +64,7 @@ class MainActivity : BaseActivity() {
     private fun initRecyclerView() {
         binding.rvBusSystem.apply {
             layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-            adapter = BusSystemAdapter { route -> moveToReservation(route) }
+            adapter = BusSystemAdapter { startStationId, route -> moveToReservation(startStationId, route) }
             setHasFixedSize(true)
         }
     }
@@ -76,9 +76,10 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun moveToReservation(route: BusSystem) {
+    private fun moveToReservation(startStationId: String?, route: BusSystem) {
         Intent(applicationContext, ReservationActivity::class.java).run {
             putExtra("route", route)
+            putExtra("startStationId", startStationId)
             startActivity(this)
         }
     }
