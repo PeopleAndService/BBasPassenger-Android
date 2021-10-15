@@ -1,7 +1,6 @@
 package com.pns.bbaspassenger.view
 
 import android.content.res.Resources
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -94,6 +93,8 @@ class ReservationRouteAdapter(val click: (Int) -> Unit) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ReservationRouteItem) {
             binding.data = item
+
+            binding.root.contentDescription = binding.root.context.getString(R.string.des_bus_stop, item.nodeName, item.nodeNo)
 
             binding.root.setOnClickListener {
                 click(adapterPosition)

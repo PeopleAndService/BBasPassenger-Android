@@ -22,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="3dp"
+        android:contentDescription="@{@string/des_reservation_bus(busNo, busLocation.nodeName, busArrival)}"
         android:layout_marginStart="@dimen/spacing_normal"
         android:layout_marginEnd="@dimen/spacing_normal"
         android:layout_marginTop="@dimen/spacing_half_normal"

@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/btn_my_page"
-        android:title="@string/my_page_title"
+        android:title="@string/des_my_page"
         app:showAsAction="ifRoom"
         android:icon="@drawable/ic_mypage"/>
 

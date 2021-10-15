@@ -20,13 +20,13 @@
     <string name="login_failed_message">로그인에 실패하였습니다.\n다시 시도해주세요.</string>
 
     <!-- reservation -->
-    <string name="start_station_select">승차 정류장 선택 완료</string>
+    <string name="start_station_select">승차 정류장 %s 선택 완료</string>
     <string name="start_station_error_title">승차 정류장 선택 오류</string>
     <string name="start_station_last_error_message">승차 정류장이 종점입니다!다시 선택해주세요.</string>
     <string name="station_clear_end_error_message">하차 정류장부터 선택해제 해주세요.\n다시 선택해주세요.</string>
     <string name="station_select_error_title">정류장 선택 오류</string>
     <string name="start_station_unselect">승차 정류장 선택 해제</string>
-    <string name="end_station_select">하차 정류장 선택 완료</string>
+    <string name="end_station_select">하차 정류장 %s 선택 완료</string>
     <string name="end_station_unselect">하차 정류장 선택 해제</string>
     <string name="end_station_error_title">하차 정류장 선택 오류</string>
     <string name="end_station_before_start">하차 정류장이 승차 정류장보다 전에 있습니다!\n다시 선택해주세요.</string>
@@ -61,7 +61,7 @@
     <string name="rating_fail_message">기사 평가에 실패했습니다.\n다시 시도해주세요.</string>
 
     <!-- menu titles -->
-    <string name="emergency_title">비상연락</string>
+    <string name="emergency_title">비상연락 버튼입니다.</string>
 
     <!-- hints -->
     <string name="search_hint">버스 번호 또는 정류장을 검색해주세요.</string>
@@ -133,6 +133,16 @@
     <string name="source3">시내버스정보 : 버스위치정보</string>
     <string name="source4">시내버스정보 : 버스도착정보</string>
 
+    <!-- description -->
+    <string name="des_login_logo">로그인 화면의 빠스 로고 입니다. </string>
+    <string name="des_login_button">구글 로그인 버튼입니다. </string>
+    <string name="des_emergency_button">비상 연락 </string>
+    <string name="des_my_page">마이페이지 버튼 입니다.</string>
+    <string name="des_bus_stop">%s 정류장, 정류장 번호는 %s 입니다.</string>
+    <string name="des_reservation_bus">차량번호 %s, 현재 위치 %s, %s 입니다.</string>
+    <string name="des_check_reservation_bus">차량번호 %s 선택되었습니다. 현재 위치 %s, %s 입니다.</string>
+    <string name="des_bus_stop_recy">%s 정류장, %s안에 있음</string>
+
     <!-- tutorial -->
     <string name="search_tutorial">검색화면</string>
     <string name="reservation_tutorial">예약화면</string>
@@ -155,4 +165,5 @@
     <string name="mypage_content1">초기 실행 시 입력했던 정보를 수정할 수 있습니다.</string>
     <string name="mypage_content2">앱과 관련된 다양한 정보를 확인할 수 있습니다.</string>
     <string name="mypage_content3">로그아웃과 회원탈퇴가 가능합니다.</string>
+
 </resources>
