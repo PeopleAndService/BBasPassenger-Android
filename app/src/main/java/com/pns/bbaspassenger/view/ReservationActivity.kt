@@ -7,7 +7,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pns.bbaspassenger.R
@@ -47,7 +46,7 @@ class ReservationActivity : BaseActivity() {
             binding.route = name[name.lastIndex]
         }
 
-        viewModel.getBusRoute(routeData.id, routeNo)
+        viewModel.getBusRoute(routeData.id, routeNo, intent.getStringExtra("startStationId"))
 
         binding.btnReservation.setOnClickListener {
             Log.d("TAG", "start : ${mAdapter.getStart()}, end : ${mAdapter.getEnd()}")
@@ -65,7 +64,7 @@ class ReservationActivity : BaseActivity() {
     private fun initRecyclerView() {
         binding.rvRoute.apply {
             layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-            mAdapter = ReservationRouteAdapter() {
+            mAdapter = ReservationRouteAdapter {
                 onClickSelect(it)
             }
             adapter = mAdapter

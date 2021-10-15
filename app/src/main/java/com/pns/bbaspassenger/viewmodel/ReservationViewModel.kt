@@ -45,7 +45,7 @@ class ReservationViewModel : ViewModel() {
     val endPos: LiveData<Int?> = _endPos
     val endSelect: LiveData<SingleEvent<String>> = _endSelect
 
-    fun getBusRoute(routeId: String, routeNo: String) {
+    fun getBusRoute(routeId: String, routeNo: String, startStationId: String?) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 ReservationRepository.getRoute(SERVICE_KEY, CITY_CODE, routeId).let { response ->
@@ -68,9 +68,13 @@ class ReservationViewModel : ViewModel() {
                                     )
                                 )
                             }
+
                             _routeItems.postValue(_innerList)
                             _routeNo.postValue(routeNo)
                             _routeId.postValue(routeId)
+
+                            val startStation = _innerList.find { item -> item.nodeId == startStationId }
+                            startStation?.let { station -> _startPos.postValue(station.nodeOrder - 1) }
                         }
                     } else {
                         Log.d(TAG, "${response.code()}")
