@@ -32,6 +32,7 @@
     <string name="end_station_before_start">하차 정류장이 승차 정류장보다 전에 있습니다!\n다시 선택해주세요.</string>
     <string name="station_full_select_title">선택 완료</string>
     <string name="station_full_select_message">승차 정류장과 하차 정류장 모두 선택하셨습니다.\n선택 해제 후 다시 시도해주세요.</string>
+    <string name="no_selected_bus_message">예약할 버스를 선택해주세요.</string>
 
     <!-- activity titles -->
     <string name="reservation_title">버스 시스템</string>
@@ -115,7 +116,7 @@
     <string name="bus_number_with_type_format">%d %s</string>
     <string name="bus_number_with_type_format_parenthesis">(%d %s)</string>
     <string name="bus_ride_info_format">%s번 버스 (%s)</string>
-    <string name="bus_ride_info_format_with_type">%d번 버스 (%d %s)</string>
+    <string name="bus_ride_info_format_with_type">번 버스 (%s)</string>
     <string name="bus_arrival_info_format">%d분 (%d번째 전)</string>
     <string name="bus_arrival_soon_format">곧 도착 (%d번째 전)</string>
     <string name="bus_arrival_count_format">%d번째 전</string>
@@ -123,6 +124,7 @@
     <string name="bus_ride_nfc_message">%s %s번 버스 %s 차량 승차 하셨습니다.</string>
     <string name="bus_off_nfc_message">%s %s번 버스 %s 차량 하차 하셨습니다.</string>
     <string name="emergency_message_format">%s님께서 %s번 버스 %s 차량 탑승 중에 %s 정류장 근처에서 긴급 문자를 보내셨습니다.</string>
+    <string name="emergency_message_format_no_ride">%s님께서\n위도: %f\n경도: %f\n위치에서 긴급 문자를 보내셨습니다.</string>
 
     <!-- api source -->
     <string name="source_from">공공데이터 포털 국토교통부 국가교통정보</string>

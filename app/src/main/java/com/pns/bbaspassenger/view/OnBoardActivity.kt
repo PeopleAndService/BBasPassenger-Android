@@ -79,6 +79,10 @@ class OnBoardActivity : AppCompatActivity() {
         nfcAdapter.disableForegroundDispatch(this)
     }
 
+    override fun onBackPressed() {
+
+    }
+
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
 

@@ -58,7 +58,7 @@
             android:id="@+id/rv_bus_system"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_normal"
             busSystemData="@{viewModel.busSystemData}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
             android:layout_marginBottom="24dp"
             android:contentDescription="@string/btn_refresh"
             android:src="@drawable/ic_refresh"
-            android:onClick="@{() -> view.requestLocation(false)}"
+            android:onClick="@{() -> view.refresh()}"
             app:tint="@null" />
 
         <TextView

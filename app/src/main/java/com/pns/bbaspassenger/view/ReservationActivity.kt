@@ -15,9 +15,10 @@ import com.pns.bbaspassenger.data.model.BusSystem
 import com.pns.bbaspassenger.databinding.ActivityReservationBinding
 import com.pns.bbaspassenger.viewmodel.ReservationViewModel
 
-class ReservationActivity : AppCompatActivity() {
+class ReservationActivity : BaseActivity() {
     private lateinit var binding: ActivityReservationBinding
     private val viewModel: ReservationViewModel by viewModels()
+    private lateinit var routeData: BusSystem
 
     private lateinit var mAdapter: ReservationRouteAdapter
 
@@ -33,16 +34,20 @@ class ReservationActivity : AppCompatActivity() {
     private fun initBinding() {
         binding = ActivityReservationBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
+        binding.view = this
         binding.viewModel = viewModel
 
-        intent.getParcelableExtra<BusSystem>("route").let { route ->
-            route!!.name.split('-').let { name ->
-                binding.routeNum = name[0] + "번"
-                binding.route = name[name.lastIndex]
-            }
+        var routeNo: String
 
-            viewModel.getBusRoute(route.id)
+        routeData = intent.getParcelableExtra<BusSystem>("route") as BusSystem
+
+        routeData.name.split('-').let { name ->
+            routeNo = name[0]
+            binding.routeNum = name[0] + "번"
+            binding.route = name[name.lastIndex]
         }
+
+        viewModel.getBusRoute(routeData.id, routeNo)
 
         binding.btnReservation.setOnClickListener {
             Log.d("TAG", "start : ${mAdapter.getStart()}, end : ${mAdapter.getEnd()}")
@@ -91,7 +96,7 @@ class ReservationActivity : AppCompatActivity() {
 
         viewModel.startSelect.observe(this) {
             it.getContentIfNotHandled()?.let { res ->
-                when(res) {
+                when (res) {
                     "startIsLast" -> {
                         MaterialAlertDialogBuilder(this)
                             .setTitle(getString(R.string.start_station_error_title))
@@ -124,7 +129,7 @@ class ReservationActivity : AppCompatActivity() {
 
         viewModel.endSelect.observe(this) {
             it.getContentIfNotHandled()?.let { res ->
-                when(res) {
+                when (res) {
                     "endBeforeStart" -> {
                         MaterialAlertDialogBuilder(this)
                             .setTitle(getString(R.string.end_station_error_title))
@@ -167,6 +172,11 @@ class ReservationActivity : AppCompatActivity() {
         return true
     }
 
+    fun showDialog() {
+        viewModel.getBusLocation(routeData.id)
+        BusSelectDialog { finish() }.show(supportFragmentManager, "bus select dialog")
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
@@ -174,7 +184,7 @@ class ReservationActivity : AppCompatActivity() {
                 true
             }
             R.id.btn_emergency -> {
-                //TODO 비상 연락
+                sendEmergencyMessage()
                 true
             }
             else -> super.onOptionsItemSelected(item)
