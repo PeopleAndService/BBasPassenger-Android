@@ -36,6 +36,11 @@ class MyPageActivity : AppCompatActivity() {
             }.show(supportFragmentManager, "change setting")
         }
 
+        binding.btnHelp.setOnClickListener {
+            val intent = Intent(this, HelpActivity::class.java)
+            startActivity(intent)
+        }
+
         binding.btnApiSource.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.api_source))

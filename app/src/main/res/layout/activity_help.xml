@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/spacing_normal">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_back"
+            android:padding="12dp"
+            android:layout_marginStart="@dimen/spacing_normal"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/help"
+            android:textAppearance="@style/text.h1"
+            android:textColor="@color/colorPrimary"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/btn_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_back" />
+
+        <View
+            android:id="@+id/ul_title"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorText"
+            android:layout_marginTop="18dp"
+            app:layout_constraintTop_toBottomOf="@id/btn_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/btn_main_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/search_tutorial"
+            android:textAppearance="@style/text.h3"
+            android:textColor="@color/colorText"
+            android:gravity="start|center_vertical"
+            android:paddingVertical="12dp"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginHorizontal="@dimen/spacing_normal"
+            app:layout_constraintTop_toBottomOf="@id/ul_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/btn_reservation_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/reservation_tutorial"
+            android:textAppearance="@style/text.h3"
+            android:textColor="@color/colorText"
+            android:gravity="start|center_vertical"
+            android:paddingVertical="12dp"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginHorizontal="@dimen/spacing_normal"
+            app:layout_constraintTop_toBottomOf="@id/btn_main_help"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/btn_onboard_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/onboard_tutorial"
+            android:textAppearance="@style/text.h3"
+            android:textColor="@color/colorText"
+            android:gravity="start|center_vertical"
+            android:paddingVertical="12dp"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginHorizontal="@dimen/spacing_normal"
+            app:layout_constraintTop_toBottomOf="@id/btn_reservation_help"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/btn_my_page_help"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/mypage_tutorial"
+            android:textAppearance="@style/text.h3"
+            android:textColor="@color/colorText"
+            android:gravity="start|center_vertical"
+            android:paddingVertical="12dp"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:layout_marginHorizontal="@dimen/spacing_normal"
+            app:layout_constraintTop_toBottomOf="@id/btn_onboard_help"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
