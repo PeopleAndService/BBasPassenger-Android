@@ -2,6 +2,7 @@ package com.pns.bbaspassenger.data.source
 
 import com.pns.bbaspassenger.data.model.BaseResponseModel
 import com.pns.bbaspassenger.data.model.BusSystem
+import com.pns.bbaspassenger.data.model.CreateQueueRequestBody
 import com.pns.bbaspassenger.data.model.GetStationRequestBody
 import com.pns.bbaspassenger.data.model.GetUserRequestBody
 import com.pns.bbaspassenger.data.model.PostRatingRequestBody
@@ -47,6 +48,11 @@ interface BBasService {
     @GET("queue/{uid}")
     suspend fun getQueue(
         @Path("uid") userId: String
+    ): Response<BaseResponseModel<Queue>>
+
+    @POST("queue/0")
+    suspend fun createQueue(
+        @Body createQueueRequestBody: CreateQueueRequestBody
     ): Response<BaseResponseModel<Queue>>
 
     @PUT("queue/0")
