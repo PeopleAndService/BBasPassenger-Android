@@ -148,6 +148,7 @@ class ReservationViewModel : ViewModel() {
 
     fun selectBus(selected: BusLocation) {
         _selectedBus.value = selected
+        Log.d(TAG, "${_selectedBus.value}")
     }
 
     fun requestReservation(onJobComplete: () -> Unit) {
@@ -187,6 +188,7 @@ class ReservationViewModel : ViewModel() {
 
     fun cancelReservation() {
         _selectedBus.value = null
+        Log.d(TAG, "${_selectedBus.value}")
     }
 
     fun clearAll() {

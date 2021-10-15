@@ -2,7 +2,6 @@ package com.pns.bbaspassenger.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -38,9 +37,39 @@ class BusSelectAdapter(private val start: Int, private val onClickItem: (BusLoca
                 binding.root.context.getString(R.string.bus_arrival_count_format, (start + 1) - busLocation.nodeOrder)
             binding.executePendingBindings()
 
-            binding.root.setOnClickListener {
+            binding.cvItem.setOnClickListener {
+                binding.cvItem.isChecked = !binding.cvItem.isChecked
+                for (i in 0 until itemCount) {
+                    if (i != adapterPosition && viewHolderList[i].binding.cvItem.isChecked) {
+                        viewHolderList[i].binding.cvItem.isChecked = false
+                    }
+                }
+            }
+
+            binding.cvItem.setOnCheckedChangeListener { _, isChecked ->
+                if (isChecked) {
+                    onClickItem(busLocation)
+                }
+
+                // card.isChecked = !card.isChecked
+                // card.setStrokeColor(card.context.getColorStateList(R.color.state_bus_press))
+                // card.strokeWidth = 10
+
+                binding.root.contentDescription = binding.root.context.getString(
+                    R.string.des_check_reservation_bus,
+                    busLocation.nodeName,
+                    busLocation.vehicleId.takeLast(4),
+                    binding.root.context.getString(
+                        R.string.bus_arrival_count_format,
+                        (start + 1) - busLocation.nodeOrder
+                    )
+                )
+            }
+
+            /*binding.root.setOnClickListener {
                 onClickItem(busLocation)
-                binding.cvItem.setStrokeColor(binding.root.context.getColorStateList(R.color.state_bus_select))
+                binding.cvItem.strokeColor = binding.cvItem.context.getColor(R.color.colorPrimary)
+                binding.cvItem.strokeWidth = 10
                 binding.root.contentDescription = binding.root.context.getString(
                     R.string.des_check_reservation_bus,
                     busLocation.nodeName,
@@ -51,11 +80,12 @@ class BusSelectAdapter(private val start: Int, private val onClickItem: (BusLoca
                     )
                 )
                 for (i in 0 until itemCount) {
-                    if (viewHolderList[i] != this) viewHolderList[i].binding.cvItem.setCardBackgroundColor(
-                        ContextCompat.getColor(binding.root.context, R.color.colorBackgroundElevated)
-                    )
+                    if (viewHolderList[i] != this) {
+                        viewHolderList[i].binding.cvItem.strokeColor = binding.cvItem.context.getColor(android.R.color.transparent)
+                        viewHolderList[i].binding.cvItem.strokeWidth = -1
+                    }
                 }
-            }
+            }*/
         }
     }
 
