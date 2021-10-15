@@ -242,12 +242,12 @@ class OnBoardViewModel : ViewModel() {
         }
     }
 
-    fun sendMessage(viewSend : (String, String, String, String) -> Unit) {
+    fun sendMessage(stationSend : (String, String, String, String) -> Unit, locationSend : () -> Unit) {
         _userQueue.value?.let { queue ->
             if (queue.boardState > 0) {
-                viewSend(BBasGlobalApplication.prefs.getString("userName"), queue.routeNo, queue.vehicleId, _routeItemList[0].nodeName)
+                stationSend(BBasGlobalApplication.prefs.getString("userName"), queue.routeNo, queue.vehicleId, _routeItemList[0].nodeName)
             } else {
-                // TODO : 위치 정보로 보내기
+                locationSend()
             }
         }
     }

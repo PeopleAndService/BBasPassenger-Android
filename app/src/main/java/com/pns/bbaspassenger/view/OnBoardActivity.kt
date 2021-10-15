@@ -12,7 +12,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pns.bbaspassenger.R
@@ -24,7 +23,7 @@ import com.pns.bbaspassenger.viewmodel.OnBoardViewModel
 import java.nio.charset.Charset
 import java.util.Arrays
 
-class OnBoardActivity : AppCompatActivity() {
+class OnBoardActivity : BaseActivity() {
     private lateinit var binding: ActivityOnBoardBinding
     private val viewModel: OnBoardViewModel by viewModels()
 
@@ -50,7 +49,7 @@ class OnBoardActivity : AppCompatActivity() {
         setObserver()
 
         binding.btnEmergency.setOnClickListener {
-            viewModel.sendMessage { userName, routeNo, vehicleId, nodeNm ->
+            viewModel.sendMessage({ userName, routeNo, vehicleId, nodeNm ->
                 val smsUri = Uri.parse("tel:${BBasGlobalApplication.prefs.getString("emergencyNumber")}")
                 val intent = Intent(Intent.ACTION_VIEW, smsUri).apply {
                     putExtra("address", BBasGlobalApplication.prefs.getString("emergencyNumber"))
@@ -61,7 +60,9 @@ class OnBoardActivity : AppCompatActivity() {
                     type = "vnd.android-dir/mms-sms"
                 }
                 startActivity(intent)
-            }
+            }, {
+                sendEmergencyMessage()
+            })
         }
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
