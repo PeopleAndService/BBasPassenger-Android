@@ -46,7 +46,7 @@ class ReservationActivity : BaseActivity() {
             binding.route = name[name.lastIndex]
         }
 
-        viewModel.getBusRoute(routeData.id, routeNo)
+        viewModel.getBusRoute(routeData.id, routeNo, intent.getStringExtra("startStationId"))
 
         binding.btnReservation.setOnClickListener {
             Log.d("TAG", "start : ${mAdapter.getStart()}, end : ${mAdapter.getEnd()}")
@@ -64,7 +64,7 @@ class ReservationActivity : BaseActivity() {
     private fun initRecyclerView() {
         binding.rvRoute.apply {
             layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-            mAdapter = ReservationRouteAdapter() {
+            mAdapter = ReservationRouteAdapter {
                 onClickSelect(it)
             }
             adapter = mAdapter

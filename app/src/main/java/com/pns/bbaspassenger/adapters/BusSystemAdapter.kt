@@ -16,7 +16,7 @@ private const val VIEW_TYPE_BUS = 0
 private const val VIEW_TYPE_BUSSTOP = 1
 private const val VIEW_TYPE_BUSSTOP_EXPAND = 2
 
-class BusSystemAdapter(val todoItemClick: (BusSystem) -> Unit) :
+class BusSystemAdapter(private val startStationId: String? = null, val todoItemClick: (String?, BusSystem) -> Unit) :
     ListAdapter<BusSystem, RecyclerView.ViewHolder>(BusSystemDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -64,7 +64,7 @@ class BusSystemAdapter(val todoItemClick: (BusSystem) -> Unit) :
             binding.executePendingBindings()
 
             binding.root.setOnClickListener {
-                todoItemClick(bus)
+                todoItemClick(startStationId, bus)
             }
         }
     }
@@ -75,7 +75,7 @@ class BusSystemAdapter(val todoItemClick: (BusSystem) -> Unit) :
             binding.busStop = busStop
             binding.rvBusList.apply {
                 layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.VERTICAL, false)
-                adapter = BusSystemAdapter(todoItemClick)
+                adapter = BusSystemAdapter(busStop.id, todoItemClick)
                 setHasFixedSize(true)
             }
             binding.executePendingBindings()
@@ -96,7 +96,7 @@ class BusSystemAdapter(val todoItemClick: (BusSystem) -> Unit) :
             binding.executePendingBindings()
 
             binding.root.setOnClickListener {
-                todoItemClick(bus)
+                todoItemClick(startStationId, bus)
             }
         }
     }
