@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Appearance -->
+    <style name="text.h1" parent="android:TextAppearance">
+        <item name="fontFamily">@font/nanum_square_ac_extrabold</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="text.h2" parent="android:TextAppearance">
+        <item name="fontFamily">@font/nanum_square_ac_extrabold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text.h3" parent="android:TextAppearance">
+        <item name="fontFamily">@font/nanum_square_ac_bold</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="text.body" parent="android:TextAppearance">
+        <item name="fontFamily">@font/nanum_square_ac_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="text.description" parent="android:TextAppearance">
+        <item name="fontFamily">@font/nanum_square_ac_regular</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <!-- Button Style -->
+    <style name="dialog.button.outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="cornerRadius">24dp</item>
+        <item name="strokeColor">@color/colorPrimary</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="android:textAppearance">@style/text.body</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="dialog.button.fill" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">24dp</item>
+        <item name="android:textAppearance">@style/text.body</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:paddingStart">24dp</item>
+        <item name="android:paddingEnd">24dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="button.fill" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">16dp</item>
+        <item name="android:textAppearance">@style/text.body</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:layout_marginStart">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <!-- Dialogs -->
+    <style name="dialog.normal" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorSurface">@color/colorBackground</item>
+        <item name="alertDialogStyle">@style/dialog.background</item>
+
+        <!-- button styles -->
+        <item name="buttonBarPositiveButtonStyle">@style/dialog.button.fill</item>
+        <item name="buttonBarNegativeButtonStyle">@style/dialog.button.outline</item>
+        <item name="buttonBarStyle">@style/dialog.buttonbar</item>
+
+        <!-- text styles -->
+        <item name="materialAlertDialogTitleTextStyle">@style/dialog.text.title</item>
+        <item name="materialAlertDialogBodyTextStyle">@style/dialog.text.body</item>
+    </style>
+
+    <style name="dialog.text.title" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textAppearance">@style/text.h2</item>
+        <item name="android:textColor">@color/colorText</item>
+    </style>
+
+    <style name="dialog.text.body" parent="MaterialAlertDialog.MaterialComponents.Body.Text">
+        <item name="android:textAppearance">@style/text.body</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:lineSpacingMultiplier">1.3</item>
+    </style>
+
+    <style name="dialog.background" parent="MaterialAlertDialog.MaterialComponents">
+        <item name="shapeAppearance">@style/dialog.shape</item>
+    </style>
+
+    <style name="dialog.shape" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="dialog.buttonbar" parent="Widget.AppCompat.ButtonBar">
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+    </style>
+
+    <!-- Chip styles -->
+    <style name="chip.choice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipSurfaceColor">@color/state_chip_background</item>
+        <item name="android:textAppearance">@style/text.body</item>
+        <item name="android:textColor">@color/state_chip_text</item>
+    </style>
+
+    <!-- Switch styles -->
+    <style name="switch.normal" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="thumbTint">@color/state_thumb</item>
+        <item name="trackTint">@color/state_track</item>
+        <item name="switchMinWidth">56dp</item>
+    </style>
+
+</resources>

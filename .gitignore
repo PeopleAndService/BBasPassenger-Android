@@ -193,6 +193,7 @@ $RECYCLE.BIN/
 
 # Google Services (e.g. APIs or Firebase)
 google-services.json
+app/src/main/res/values/api_keys.xml
 
 # Android Patch
 
@@ -222,6 +223,8 @@ obj/
 .idea/sqlDataSources.xml
 .idea/dynamic.xml
 .idea/uiDesigner.xml
+.idea/render.experimental.xml
+.idea/deploymentTargetDropDown.xml
 
 # OS-specific files
 .DS_Store?

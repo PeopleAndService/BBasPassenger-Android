@@ -1,3 +1,169 @@
 <resources>
-    <string name="app_name">BBasPassenger</string>
+    <string name="app_name">빠스</string>
+
+    <!-- launch -->
+    <string name="permission_title">앱 사용을 위해 위치 권한이 반드시 필요합니다.</string>
+    <string name="setting_button">설정</string>
+    <string name="permission_denied_message">위치 권한이 거부되어 앱이 종료됩니다.\n[설정] -> [권한]에서 허용 가능합니다.</string>
+    <string name="permission_denied_title">위치 권한이 거부되어 앱이 종료됩니다.</string>
+    <string name="quit_app">앱 종료</string>
+    <string name="nfc_title">NFC 설정</string>
+    <string name="nfc_message">앱 사용을 위해 NFC 모드를 기본 모드로 반드시 설정해주세요.\n확인 버튼을 누르면 설정으로 이동합니다.\nNFC가 기본 모드가 아닌 경우 앱이 종료됩니다.</string>
+    <string name="nfc_quit_app_message">NFC 기본 모드가 꺼져있어 앱이 종료됩니다.</string>
+    <string name="board_info_exist_title">탑승 예약 정보 존재</string>
+    <string name="board_info_exist_message">진행 중인 탑승 정보가 존재합니다.\n계속 하시겠습니까?\n[확인]을 누르면 이어할 수 있습니다.\n[취소]를 누르면 삭제됩니다.</string>
+    <string name="error_detect_title">오류 발생</string>
+    <string name="error_detect_message">예상치 못한 오류가 발생하여 앱이 종료됩니다.</string>
+
+    <!-- login -->
+    <string name="login_failed_title">로그인 실패</string>
+    <string name="login_failed_message">로그인에 실패하였습니다.\n다시 시도해주세요.</string>
+
+    <!-- reservation -->
+    <string name="start_station_select">승차 정류장 %s 선택 완료</string>
+    <string name="start_station_error_title">승차 정류장 선택 오류</string>
+    <string name="start_station_last_error_message">승차 정류장이 종점입니다!다시 선택해주세요.</string>
+    <string name="station_clear_end_error_message">하차 정류장부터 선택해제 해주세요.\n다시 선택해주세요.</string>
+    <string name="station_select_error_title">정류장 선택 오류</string>
+    <string name="start_station_unselect">승차 정류장 선택 해제</string>
+    <string name="end_station_select">하차 정류장 %s 선택 완료</string>
+    <string name="end_station_unselect">하차 정류장 선택 해제</string>
+    <string name="end_station_error_title">하차 정류장 선택 오류</string>
+    <string name="end_station_before_start">하차 정류장이 승차 정류장보다 전에 있습니다!\n다시 선택해주세요.</string>
+    <string name="station_full_select_title">선택 완료</string>
+    <string name="station_full_select_message">승차 정류장과 하차 정류장 모두 선택하셨습니다.\n선택 해제 후 다시 시도해주세요.</string>
+    <string name="no_selected_bus_message">예약할 버스를 선택해주세요.</string>
+
+    <!-- activity titles -->
+    <string name="reservation_title">버스 시스템</string>
+    <string name="my_page_title">마이페이지</string>
+
+    <!-- dialog titles -->
+    <string name="input_userinfo_title">추가 정보 입력</string>
+    <string name="input_emergency_contact_title">비상연락처를 입력해주세요.</string>
+    <string name="low_bus_only_title">저상버스만 이용하시나요?</string>
+    <string name="select_location_title">사용 지역을 선택해주세요.</string>
+    <string name="select_bus_title">예약할 버스를 선택해주세요.</string>
+    <string name="confirm_reservation_title">버스 탑승 정보</string>
+    <string name="done_reservation_title">예약 완료 되었습니다.</string>
+    <string name="rate_title">탑승하신 버스를 평가해주세요.</string>
+    <string name="logout_title">로그아웃 하시겠습니까?</string>
+    <string name="withdraw_title">빠스 앱을 탈퇴하시겠습니까?</string>
+    <string name="error_title">예상치 못한 오류가 발생하였습니다.</string>
+    <string name="error_message">다시 시도해 주세요.</string>
+    <string name="emergency_regex_error">비상연락처 형식이 잘못되었습니다.</string>
+    <string name="cancel_reservation_title">예약 취소 하시겠습니까?</string>
+    <string name="cancel_reservation_fail_title">예약 취소 실패</string>
+    <string name="cancel_reservation_fail_message">예약 취소에 실패했습니다.\n다시 시도해주세요.</string>
+    <string name="nfc_fail_title">NFC 인식 실패</string>
+    <string name="nfc_fail_message">NFC 인식에 실패했습니다.\n다시 태그해주세요.</string>
+    <string name="rating_fail_title">기사 평가 실패</string>
+    <string name="rating_fail_message">기사 평가에 실패했습니다.\n다시 시도해주세요.</string>
+
+    <!-- menu titles -->
+    <string name="emergency_title">비상연락 버튼입니다.</string>
+
+    <!-- hints -->
+    <string name="search_hint">버스 번호 또는 정류장을 검색해주세요.</string>
+    <string name="emergency_contact_needed">필수로 입력하셔야 합니다.</string>
+    <string name="emergency_contact_uncorrect">올바른 전화번호를 입력해주세요.</string>
+    <string name="emergency_contact_hint">예) 01012345678</string>
+
+    <!-- buttons -->
+    <string name="btn_yes">네</string>
+    <string name="btn_no">아니오</string>
+    <string name="btn_confirm">확인</string>
+    <string name="btn_cancel">취소</string>
+    <string name="btn_reservation">예약하기</string>
+    <string name="btn_cancel_reservation">예약취소</string>
+    <string name="btn_rate">평가하기</string>
+    <string name="btn_refresh">새로고침</string>
+    <string name="btn_quit">앱 종료하기</string>
+    <string name="btn_save">저장하기</string>
+    <string name="btn_change">변경하기</string>
+    <string name="btn_close">닫기</string>
+
+    <!-- my page items -->
+    <string name="change_setting">회원 설정 변경</string>
+    <string name="change_emergency_contact">비상연락처 변경하기</string>
+    <string name="change_low_bus_only">저상 버스만 보기</string>
+    <string name="api_source">정보 제공처</string>
+    <string name="legal_notice">법적고지</string>
+    <string name="help">도움말</string>
+    <string name="open_source_license">오픈소스 정보</string>
+    <string name="logout">로그아웃</string>
+    <string name="withdraw">회원 탈퇴</string>
+
+    <!-- textview -->
+    <string name="riding">승차</string>
+    <string name="get_off">하차</string>
+    <string name="nfc_ride">승차 확인</string>
+    <string name="nfc_off">하차 확인</string>
+    <string name="riding_station">승차 정류장</string>
+    <string name="get_off_station">하차 정류장</string>
+    <string name="current_bus_position">현재 버스 위치</string>
+    <string name="load_route_info">노선 정보를 불러오는 중입니다\n잠시 기다려 주세요...</string>
+    <string name="no_result_search">검색 결과가 없습니다.</string>
+
+    <!-- textview format -->
+    <string name="bus_route_format">%s번</string>
+    <string name="bus_start_end_format">%s - %s</string>
+    <string name="bus_start_end_format_with_parenthesis">(%s - %s)</string>
+    <string name="bus_head_to_format">%s 방면</string>
+    <string name="bus_head_to_format_with_parenthesis">(%s 방면)</string>
+    <string name="distance_format">%dm</string>
+    <string name="bus_number_format_with_parenthesis">(%d)</string>
+    <string name="bus_number_with_type_format">%d %s</string>
+    <string name="bus_number_with_type_format_parenthesis">(%d %s)</string>
+    <string name="bus_ride_info_format">%s번 버스 (%s)</string>
+    <string name="bus_ride_info_format_with_type">번 버스 (%s)</string>
+    <string name="bus_arrival_info_format">%d분 (%d번째 전)</string>
+    <string name="bus_arrival_soon_format">곧 도착 (%d번째 전)</string>
+    <string name="bus_arrival_count_format">%d번째 전</string>
+    <string name="bus_arrival_info_not_found">도착 정보 없음</string>
+    <string name="bus_ride_nfc_message">%s %s번 버스 %s 차량 승차 하셨습니다.</string>
+    <string name="bus_off_nfc_message">%s %s번 버스 %s 차량 하차 하셨습니다.</string>
+    <string name="emergency_message_format">%s님께서 %s번 버스 %s 차량 탑승 중에 %s 정류장 근처에서 긴급 문자를 보내셨습니다.</string>
+    <string name="emergency_message_format_no_ride">%s님께서\n위도: %f\n경도: %f\n위치에서 긴급 문자를 보내셨습니다.</string>
+
+    <!-- api source -->
+    <string name="source_from">공공데이터 포털 국토교통부 국가교통정보</string>
+    <string name="source1">시내버스정보 : 버스노선정보</string>
+    <string name="source2">시내버스정보 : 버스정류소정보</string>
+    <string name="source3">시내버스정보 : 버스위치정보</string>
+    <string name="source4">시내버스정보 : 버스도착정보</string>
+
+    <!-- description -->
+    <string name="des_login_logo">로그인 화면의 빠스 로고 입니다. </string>
+    <string name="des_login_button">구글 로그인 버튼입니다. </string>
+    <string name="des_emergency_button">비상 연락 </string>
+    <string name="des_my_page">마이페이지 버튼 입니다.</string>
+    <string name="des_bus_stop">%s 정류장, 정류장 번호는 %s 입니다.</string>
+    <string name="des_reservation_bus">차량번호 %s, 현재 위치 %s, %s 입니다.</string>
+    <string name="des_check_reservation_bus">차량번호 %s 선택되었습니다. 현재 위치 %s, %s 입니다.</string>
+    <string name="des_bus_stop_recy">%s 정류장, %s안에 있음</string>
+
+    <!-- tutorial -->
+    <string name="search_tutorial">검색화면</string>
+    <string name="reservation_tutorial">예약화면</string>
+    <string name="onboard_tutorial">탑승화면</string>
+    <string name="mypage_tutorial">마이페이지</string>
+    <string name="search_content1">검색어가 없는 경우 사용자 위치 기반으로 주변 정류장 정보가 표시됩니다.</string>
+    <string name="search_content2">검색어를 입력한 후 검색하면 해당 키워드가 포함된 정류장과 노선 정보가 표시됩니다.</string>
+    <string name="reservation_content1">검색화면에서 버스를 선택하면 선택한 버스의 노선도가 표시됩니다.</string>
+    <string name="reservation_content2">노선도에서 영역을 클릭하면 승차 정류장이 선택됩니다.\n만약 검색화면에서 정류소 -> 버스 순으로 선택하였다면 승차 정류장은 선택된 상태로 실행됩니다.</string>
+    <string name="reservation_content3">승차 정류장을 선택한 상태에서 영역을 클릭하면 하차 정류장이 선택됩니다.</string>
+    <string name="reservation_content4">승.하차 정류장을 모두 선택하였다면 도착 예정 버스 중에 예약할 버스를 선택할 수 있습니다.</string>
+    <string name="reservation_content5">탑승할 차량까지 선택을 마쳤다면 최종적으로 예약 내역을 확인한 후 예약을 마무리합니다.</string>
+    <string name="reservation_content6">예약이 완료되면 예약내역이 표시되고 탑승화면으로 전환됩니다.</string>
+    <string name="onboard_content1">상단에는 항상 탑승할 버스의 현재 위치가 표시됩니다.</string>
+    <string name="onboard_content2">승차 전에는 탑승할 버스의 도착정보가 표시됩니다.</string>
+    <string name="onboard_content3">승차 전까지는 예약 취소가 가능합니다.</string>
+    <string name="onboard_content4">승차 시 NFC 태그에 폰을 대면 승차가 완료됩니다.</string>
+    <string name="onboard_content5">하차 시 NFC 태그에 폰을 대면 하차가 완료됩니다.</string>
+    <string name="onboard_content6">승차 후 부터 하차 시 까지 기사 평가가 가능합니다.</string>
+    <string name="mypage_content1">초기 실행 시 입력했던 정보를 수정할 수 있습니다.</string>
+    <string name="mypage_content2">앱과 관련된 다양한 정보를 확인할 수 있습니다.</string>
+    <string name="mypage_content3">로그아웃과 회원탈퇴가 가능합니다.</string>
+
 </resources>

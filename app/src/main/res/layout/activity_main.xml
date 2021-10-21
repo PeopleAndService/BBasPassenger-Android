@@ -1,18 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <variable
+            name="view"
+            type="com.pns.bbaspassenger.view.MainActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.pns.bbaspassenger.viewmodel.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_main"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/et_search"
+            app:title="@string/reservation_title"
+            tools:menu="@menu/menu_actionbar"
+            app:titleTextAppearance="@style/text.h1"
+            app:titleTextColor="@color/colorPrimary" />
+
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_hint"
+            android:inputType="textAutoComplete"
+            android:background="@drawable/bg_search"
+            android:padding="@dimen/spacing_half_normal"
+            android:textColorHint="@color/colorText"
+            android:textAppearance="@style/text.body"
+            android:drawableStart="@drawable/ic_search"
+            android:drawablePadding="@dimen/spacing_half_normal"
+            android:elevation="6dp"
+            android:maxLines="1"
+            android:imeOptions="actionSearch"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@id/tb_main"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintBottom_toTopOf="@id/rv_bus_system"
+            android:minHeight="48dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_bus_system"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/spacing_normal"
+            busSystemData="@{viewModel.busSystemData}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_search" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@string/btn_refresh"
+            android:src="@drawable/ic_refresh"
+            android:onClick="@{() -> view.refresh()}"
+            app:tint="@null" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_result_search"
+            android:textAppearance="@style/text.h2"
+            android:textColor="@color/colorText"
+            android:visibility="@{viewModel.busSystemData.size()}"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="@dimen/spacing_normal" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="@dimen/spacing_normal" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
