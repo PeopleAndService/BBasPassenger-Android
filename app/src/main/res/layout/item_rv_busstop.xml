@@ -43,18 +43,20 @@
                     app:layout_constraintEnd_toStartOf="@id/tv_name"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_chainStyle="packed" />
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintHorizontal_bias="0.0"/>
 
                 <TextView
                     android:id="@+id/tv_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing_half_normal"
                     android:text="@{busStopName}"
                     android:textAppearance="@style/text.body"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/iv_icon" />
+                    app:layout_constraintStart_toEndOf="@id/iv_icon"
+                    app:layout_constraintEnd_toStartOf="@id/tv_description"/>
 
                 <TextView
                     android:id="@+id/tv_description"
@@ -62,9 +64,11 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="@style/text.description"
                     android:text="@{busStop.description}"
+                    android:layout_marginHorizontal="@dimen/spacing_half_normal"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/tv_name"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

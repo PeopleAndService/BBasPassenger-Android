@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/text.h1"
                 android:textColor="@color/colorPrimary"
+                android:padding="@dimen/spacing_small"
                 android:text="@{@string/bus_route_format(viewModel.userQueue.routeNo)}"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/text.h2"
                 android:textColor="@color/colorText"
+                android:padding="@dimen/spacing_small"
                 android:text="@{@string/bus_start_end_format(viewModel.route.get(0).nodeName, viewModel.userQueue.routeDestination)}"
                 android:layout_marginTop="@dimen/spacing_half_normal"
                 app:layout_constraintTop_toBottomOf="@id/tv_route_no"
@@ -68,6 +70,7 @@
                 app:layout_constraintBottom_toTopOf="@id/btn_route" />
 
             <com.google.android.material.button.MaterialButton
+                style="@style/button.fill"
                 android:id="@+id/btn_route"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

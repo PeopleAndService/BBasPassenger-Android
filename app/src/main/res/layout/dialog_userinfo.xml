@@ -223,6 +223,7 @@
             </com.google.android.material.chip.ChipGroup>
 
             <com.google.android.material.button.MaterialButton
+                style="@style/button.fill"
                 android:id="@+id/btn_save"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

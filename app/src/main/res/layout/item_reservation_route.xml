@@ -62,15 +62,19 @@
 
         <TextView
             android:id="@+id/tv_station_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{data.nodeName}"
             android:textAppearance="@style/text.h3"
             android:textColor="@color/colorText"
             android:layout_marginStart="@dimen/spacing_normal"
+            android:layout_marginVertical="@dimen/spacing_normal"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/guideline3" />
+            app:layout_constraintStart_toEndOf="@id/guideline3"
+            app:layout_constraintEnd_toStartOf="@id/tv_station_id"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_bias="0.0"/>
 
         <TextView
             android:id="@+id/tv_station_id"
@@ -79,10 +83,11 @@
             android:textAppearance="@style/text.description"
             android:textColor="@color/colorText"
             android:text="@{data.nodeNo}"
+            android:layout_marginHorizontal="@dimen/spacing_half_normal"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/tv_station_name"
-            android:layout_marginStart="@dimen/spacing_normal" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:layout_width="wrap_content"
