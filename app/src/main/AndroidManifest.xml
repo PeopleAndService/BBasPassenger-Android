@@ -41,8 +41,8 @@
         <activity android:name=".view.MyPageActivity" />
         <activity android:name=".view.OnBoardActivity" />
         <activity android:name=".view.ReservationActivity" />
-        <activity android:name=".view.HelpActivity" />
-        <activity android:name=".view.TutorialActivity" />
+        <activity android:name=".view.help.HelpActivity" />
+        <activity android:name=".view.help.TutorialActivity" />
         <activity android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
             android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar" />
 

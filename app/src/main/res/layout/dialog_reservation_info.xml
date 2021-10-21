@@ -6,7 +6,7 @@
 
         <variable
             name="view"
-            type="com.pns.bbaspassenger.view.ReservationInfoDialog" />
+            type="com.pns.bbaspassenger.view.dialogs.ReservationInfoDialog" />
 
         <variable
             name="viewModel"

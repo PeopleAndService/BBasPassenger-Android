@@ -1,4 +1,4 @@
-package com.pns.bbaspassenger.view
+package com.pns.bbaspassenger.view.help
 
 import android.os.Bundle
 import android.view.LayoutInflater

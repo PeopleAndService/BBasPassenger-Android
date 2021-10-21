@@ -1,4 +1,4 @@
-package com.pns.bbaspassenger.view
+package com.pns.bbaspassenger.view.help
 
 import android.content.Intent
 import android.os.Bundle

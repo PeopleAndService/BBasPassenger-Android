@@ -1,4 +1,4 @@
-package com.pns.bbaspassenger.view
+package com.pns.bbaspassenger.view.dialogs
 
 import android.app.Dialog
 import android.content.Intent
@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.pns.bbaspassenger.R
 import com.pns.bbaspassenger.databinding.DialogReservationCompleteBinding
+import com.pns.bbaspassenger.view.OnBoardActivity
 import com.pns.bbaspassenger.viewmodel.ReservationViewModel
 
 class ReservationCompleteDialog(private val finish: () -> Unit) : DialogFragment() {

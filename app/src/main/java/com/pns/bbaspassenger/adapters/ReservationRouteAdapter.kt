@@ -1,4 +1,4 @@
-package com.pns.bbaspassenger.view
+package com.pns.bbaspassenger.adapters
 
 import android.content.res.Resources
 import android.util.TypedValue

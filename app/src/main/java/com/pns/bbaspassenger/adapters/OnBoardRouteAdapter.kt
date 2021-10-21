@@ -1,11 +1,10 @@
-package com.pns.bbaspassenger.view
+package com.pns.bbaspassenger.adapters
 
 import android.content.res.Resources
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -16,13 +15,13 @@ import com.pns.bbaspassenger.databinding.ItemRouteBinding
 class OnBoardRouteAdapter() : RecyclerView.Adapter<OnBoardRouteAdapter.OnBoardRouteViewHolder>() {
     private val itemList: MutableList<RouteItemModel> = mutableListOf()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardRouteAdapter.OnBoardRouteViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardRouteViewHolder {
         val binding = ItemRouteBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return OnBoardRouteViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: OnBoardRouteAdapter.OnBoardRouteViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: OnBoardRouteViewHolder, position: Int) {
         holder.bind(itemList[position])
     }
 
