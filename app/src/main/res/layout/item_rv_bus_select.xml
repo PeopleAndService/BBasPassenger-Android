@@ -51,7 +51,7 @@
 
             <TextView
                 android:id="@+id/tv_bus_stop_name"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="@{busLocation.nodeName}"
                 android:textColor="@color/colorText"
@@ -59,7 +59,10 @@
                 android:layout_marginTop="@dimen/spacing_half_normal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_bus_no" />
+                app:layout_constraintTop_toBottomOf="@id/tv_bus_no"
+                app:layout_constraintEnd_toStartOf="@id/tv_location"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintHorizontal_bias="0.0"/>
 
             <TextView
                 android:id="@+id/tv_location"
@@ -69,9 +72,11 @@
                 android:textColor="@color/colorWarning"
                 android:textAppearance="@style/text.body"
                 android:layout_marginTop="@dimen/spacing_half_normal"
+                android:layout_marginStart="@dimen/spacing_normal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_bus_no" />
+                app:layout_constraintTop_toBottomOf="@id/tv_bus_no"
+                app:layout_constraintStart_toEndOf="@id/tv_bus_stop_name"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
