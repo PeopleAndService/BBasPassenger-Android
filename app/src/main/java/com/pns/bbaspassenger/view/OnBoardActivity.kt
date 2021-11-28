@@ -15,6 +15,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pns.bbaspassenger.R
+import com.pns.bbaspassenger.adapters.OnBoardRouteAdapter
 import com.pns.bbaspassenger.data.model.LocationEnum
 import com.pns.bbaspassenger.databinding.ActivityOnBoardBinding
 import com.pns.bbaspassenger.databinding.DialogRatingBinding

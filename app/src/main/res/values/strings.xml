@@ -64,9 +64,9 @@
     <string name="emergency_title">비상연락 버튼입니다.</string>
 
     <!-- hints -->
-    <string name="search_hint">버스 번호 또는 정류장을 검색해주세요.</string>
-    <string name="emergency_contact_needed">필수로 입력하셔야 합니다.</string>
-    <string name="emergency_contact_uncorrect">올바른 전화번호를 입력해주세요.</string>
+    <string name="search_hint"><font size="16">버스 번호 또는 정류장을 검색해주세요.</font></string>
+    <string name="emergency_contact_needed"><font size="12">필수로 입력하셔야 합니다.</font></string>
+    <string name="emergency_contact_uncorrect"><font size="12">올바른 전화번호를 입력해주세요.</font></string>
     <string name="emergency_contact_hint">예) 01012345678</string>
 
     <!-- buttons -->

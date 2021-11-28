@@ -22,13 +22,14 @@
 
         <TextView
             android:id="@+id/tv_bus_info"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@{busName}"
             android:textAppearance="@style/text.body"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_description"/>
 
         <TextView
             android:id="@+id/tv_description"
@@ -36,6 +37,8 @@
             android:layout_height="wrap_content"
             android:text="@{bus.description}"
             android:textAppearance="@style/text.description"
+            android:layout_marginStart="@dimen/spacing_half_normal"
+            app:layout_constraintStart_toEndOf="@id/tv_bus_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent" />

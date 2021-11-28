@@ -11,6 +11,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.pns.bbaspassenger.R
 import com.pns.bbaspassenger.databinding.ActivityMyPageBinding
 import com.pns.bbaspassenger.utils.BBasGlobalApplication
+import com.pns.bbaspassenger.view.dialogs.UserInfoDialog
+import com.pns.bbaspassenger.view.help.HelpActivity
 import com.pns.bbaspassenger.viewmodel.MyPageViewModel
 
 class MyPageActivity : AppCompatActivity() {

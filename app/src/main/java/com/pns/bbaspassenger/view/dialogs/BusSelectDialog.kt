@@ -1,4 +1,4 @@
-package com.pns.bbaspassenger.view
+package com.pns.bbaspassenger.view.dialogs
 
 import android.app.Dialog
 import android.os.Bundle

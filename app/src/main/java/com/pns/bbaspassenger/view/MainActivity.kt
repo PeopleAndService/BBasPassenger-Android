@@ -14,6 +14,7 @@ import com.pns.bbaspassenger.adapters.BusSystemAdapter
 import com.pns.bbaspassenger.data.model.BusSystem
 import com.pns.bbaspassenger.databinding.ActivityMainBinding
 import com.pns.bbaspassenger.utils.BBasGlobalApplication
+import com.pns.bbaspassenger.view.dialogs.UserInfoDialog
 import com.pns.bbaspassenger.viewmodel.MainViewModel
 
 class MainActivity : BaseActivity() {

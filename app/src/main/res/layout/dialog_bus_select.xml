@@ -6,7 +6,7 @@
 
         <variable
             name="view"
-            type="com.pns.bbaspassenger.view.BusSelectDialog" />
+            type="com.pns.bbaspassenger.view.dialogs.BusSelectDialog" />
 
         <variable
             name="viewModel"
